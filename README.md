@@ -299,7 +299,7 @@ PAISATRACK_NEW/
 - **No Server Communication**: No data is sent to any server
 
 ## Technical Information
-- **Version**: 1.0.2
+- **Version**: 1.0.3
 - **Data Format**: JSON Files
 - **Browser Support**: Chrome, Firefox, Safari, Edge
 - **Theme Support**: Light & Dark Mode

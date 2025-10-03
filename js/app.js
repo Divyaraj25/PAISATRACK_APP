@@ -400,7 +400,7 @@ class FinanceApp {
                     <div class="card-body">
                         <div class="tech-info">
                             <div class="info-item">
-                                <strong>Version:</strong> 1.0.2
+                                <strong>Version:</strong> 1.0.3
                             </div>
                             <div class="info-item">
                                 <strong>Data Format:</strong> JSON Files

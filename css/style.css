@@ -1541,6 +1541,58 @@ body {
         flex-direction: column;
         gap: 0.5rem;
     }
+    
+    /* Improved transaction details for tablets */
+    /* .transaction-details {
+        max-width: calc(100% - 90px); /* Adjusted for tablet screens */
+    /* }  */
+
+    #recentTransactions{
+        width: 85vw;
+    }
+    
+    .transaction-item {
+        gap: 0.5rem;
+        padding: 0.6rem;
+    }
+    
+    .transaction-details h4 {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-details p {
+        font-size: 0.6rem;
+    }
+    
+    .transaction-amount {
+        font-size: 0.8rem;
+        min-width: 65px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    #recentTransactions{
+        width: 85vw;
+    }
+
+    .transaction-item {
+        gap: 0.3rem;
+        padding: 0.4rem;
+    }
+    
+    .transaction-details h4 {
+        font-size: 0.65rem;
+    }
+    
+    .transaction-details p {
+        font-size: 0.5rem;
+    }
+    
+    .transaction-amount {
+        font-size: 0.7rem;
+        min-width: 55px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1609,6 +1661,38 @@ body {
     .chart-card .card-body {
         height: 130px;
         padding: 0.4rem;
+    }
+    
+    /* Improved transaction details for small screens */
+    /* .transaction-details {
+        max-width: calc(100% - 80px); /* Adjusted for smaller screens */
+    /* }  */
+    
+    #recentTransactions{
+        width: 85vw;
+    }
+
+    .transaction-item {
+        gap: 0.4rem;
+        padding: 0.5rem;
+    }
+    
+    .transaction-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .transaction-details h4 {
+        font-size: 0.7rem;
+    }
+    
+    .transaction-details p {
+        font-size: 0.55rem;
+    }
+    
+    .transaction-amount {
+        font-size: 0.75rem;
+        min-width: 60px;
     }
 }
 
@@ -1694,16 +1778,20 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+    overflow-x: hidden;
 }
 
 .transaction-item {
     display: flex;
     align-items: center;
-    padding: 0.5rem;
+    gap: 0.75rem;
+    padding: 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     background: var(--bg-primary);
     transition: var(--transition);
+    width: 100%;
+    min-width: 0; /* Important for nested flex truncation */
 }
 
 .transaction-item:hover {
@@ -1719,7 +1807,6 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 0.8rem;
-    margin-right: 0.5rem;
     background: rgba(37, 99, 235, 0.1);
     color: var(--primary-color);
     flex-shrink: 0;
@@ -1727,7 +1814,8 @@ body {
 
 .transaction-details {
     flex: 1;
-    min-width: 0;
+    min-width: 0; /* Crucial for text truncation in flexbox */
+    overflow: hidden;
 }
 
 .transaction-details h4 {
@@ -1738,6 +1826,8 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
+    line-height: 1.2;
 }
 
 .transaction-details p {
@@ -1747,14 +1837,19 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
+    line-height: 1.2;
 }
 
 .transaction-amount {
     font-size: 0.8rem;
     font-weight: 600;
     text-align: right;
-    min-width: 55px;
+    min-width: 70px; /* Increased for +/- symbols and currency */
     flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .transaction-amount.positive {
