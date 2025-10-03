@@ -41,12 +41,17 @@ class TransactionManager {
                     <label>Date Range:</label>
                     <select id="transactionDateRange">
                         <option value="all">All Time</option>
-                        <option value="daily">Today</option>
+                        <!-- <option value="daily">Today</option> -->
                         <option value="weekly">This Week</option>
                         <option value="monthly">This Month</option>
                         <option value="yearly">This Year</option>
                         <option value="custom">Custom</option>
                     </select>
+                </div>
+                <div class="filter-group" id="transactionCustomDateRange" style="display: none;">
+                    <label>Custom Date Range:</label>
+                    <input type="date" id="transactionCustomStartDate">
+                    <input type="date" id="transactionCustomEndDate">
                 </div>
                 <div class="filter-group">
                     <button class="btn btn-secondary" id="applyFiltersBtn">
@@ -131,7 +136,24 @@ class TransactionManager {
 
         // Date range filter
         if (dateRange !== 'all') {
-            const range = FinanceUtils.getDateRange(dateRange);
+            let range;
+            if (dateRange === 'custom') {
+                // Handle custom date range
+                const startDate = document.getElementById('transactionCustomStartDate')?.value;
+                const endDate = document.getElementById('transactionCustomEndDate')?.value;
+                if (startDate && endDate) {
+                    range = {
+                        start: startDate,
+                        end: endDate
+                    };
+                } else {
+                    // If custom dates not set, use monthly as default
+                    range = FinanceUtils.getDateRange('monthly');
+                }
+            } else {
+                range = FinanceUtils.getDateRange(dateRange);
+            }
+            
             filtered = filtered.filter(t => {
                 const transactionDate = FinanceUtils.parseDate(t.date);
                 const startDate = FinanceUtils.parseDate(range.start);
@@ -273,6 +295,16 @@ class TransactionManager {
             if (e.target.closest('.delete-transaction')) {
                 const id = e.target.closest('.delete-transaction').getAttribute('data-id');
                 this.deleteTransaction(id);
+            }
+        });
+        
+        // Handle date range change for custom dates
+        document.getElementById('transactionDateRange').addEventListener('change', (e) => {
+            const customDateRange = document.getElementById('transactionCustomDateRange');
+            if (e.target.value === 'custom') {
+                customDateRange.style.display = 'flex';
+            } else {
+                customDateRange.style.display = 'none';
             }
         });
     }
@@ -485,8 +517,11 @@ class TransactionManager {
         this.loadTransactionsList();
         
         // Refresh dashboard if it's active
-        if (typeof DashboardManager !== 'undefined' && document.getElementById('dashboard').classList.contains('active')) {
-            DashboardManager.loadDashboard();
+        if (typeof DashboardManager !== 'undefined') {
+            const dashboardElement = document.getElementById('dashboard');
+            if (dashboardElement && dashboardElement.classList.contains('active')) {
+                DashboardManager.loadDashboard();
+            }
         }
     }
 
@@ -576,8 +611,11 @@ class TransactionManager {
             this.loadTransactionsList();
             
             // Refresh dashboard if it's active
-            if (typeof DashboardManager !== 'undefined' && document.getElementById('dashboard').classList.contains('active')) {
-                DashboardManager.loadDashboard();
+            if (typeof DashboardManager !== 'undefined') {
+                const dashboardElement = document.getElementById('dashboard');
+                if (dashboardElement && dashboardElement.classList.contains('active')) {
+                    DashboardManager.loadDashboard();
+                }
             }
         }
     }

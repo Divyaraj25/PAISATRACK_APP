@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PaisaTrack - Enhanced Comprehensive Test Suite</title>
+    <title>PaisaTrack - Comprehensive Test Suite</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -105,23 +105,6 @@
         .summary-passed { color: #28a745; }
         .summary-failed { color: #dc3545; }
         .summary-pending { color: #ffc107; }
-        
-        .test-category {
-            font-weight: bold;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-        }
-        
-        .debug-info {
-            background-color: #f8f9fa;
-            border-left: 3px solid #007bff;
-            padding: 10px;
-            margin: 10px 0;
-            font-family: monospace;
-            font-size: 14px;
-        }
     </style>
 </head>
 <body class="light-theme">
@@ -130,7 +113,7 @@
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-vial"></i>
-                    <h1>PaisaTrack - Enhanced Test Suite</h1>
+                    <h1>PaisaTrack - Test Suite</h1>
                 </div>
             </div>
         </div>
@@ -140,8 +123,8 @@
         <div class="container">
             <div class="page active">
                 <div class="page-header">
-                    <h2><i class="fas fa-flask"></i> Enhanced Comprehensive Test Suite</h2>
-                    <p>Automated testing for all PaisaTrack functionalities including timezone fixes</p>
+                    <h2><i class="fas fa-flask"></i> Comprehensive Test Suite</h2>
+                    <p>Automated testing for all PaisaTrack functionalities</p>
                 </div>
                 
                 <div class="test-summary">
@@ -436,7 +419,7 @@
                 // Test 3: CSV parsing
                 recordTestResult('Import/Export: CSV parsing', 'PENDING');
                 try {
-                    const csvInput = 'id,name\\n1,Test\\n2,Test2';
+                    const csvInput = 'id,name\n1,Test\n2,Test2';
                     console.log('Testing CSV parsing with input:', csvInput);
                     const parsedCsv = DataManager.csvToArray(csvInput);
                     console.log('CSV parsing result:', parsedCsv);
@@ -675,367 +658,6 @@
             }
         }
         
-        // Test IST timezone fixes
-        async function testISTTimezoneFixes() {
-            console.log('Starting IST Timezone Fix tests...');
-            
-            // Add category header
-            const resultsContainer = document.getElementById('testResults');
-            if (resultsContainer) {
-                const categoryHeader = document.createElement('div');
-                categoryHeader.className = 'test-category';
-                categoryHeader.innerHTML = '<i class="fas fa-clock"></i> IST Timezone Fix Tests';
-                resultsContainer.appendChild(categoryHeader);
-            }
-            
-            // Test 1: Current IST time
-            recordTestResult('IST Fix: Current IST time', 'PENDING');
-            try {
-                const now = new Date();
-                const istNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-                if (istNow instanceof Date) {
-                    recordTestResult('IST Fix: Current IST time', 'PASS', `Current IST time: ${istNow.toString()}`);
-                } else {
-                    recordTestResult('IST Fix: Current IST time', 'FAIL', 'Failed to get IST time');
-                }
-            } catch (error) {
-                console.error('IST time test failed:', error);
-                recordTestResult('IST Fix: Current IST time', 'FAIL', `IST time test failed: ${error.message}`);
-            }
-            
-            // Test 2: Daily range creation with IST
-            recordTestResult('IST Fix: Daily range creation', 'PENDING');
-            try {
-                const dailyRange = FinanceUtils.getDateRange('daily');
-                if (dailyRange && dailyRange.start && dailyRange.end) {
-                    recordTestResult('IST Fix: Daily range creation', 'PASS', `Daily range: ${JSON.stringify(dailyRange)}`);
-                } else {
-                    recordTestResult('IST Fix: Daily range creation', 'FAIL', 'Failed to create daily range');
-                }
-            } catch (error) {
-                console.error('Daily range test failed:', error);
-                recordTestResult('IST Fix: Daily range creation', 'FAIL', `Daily range test failed: ${error.message}`);
-            }
-            
-            // Test 3: Transaction time parsing
-            recordTestResult('IST Fix: Transaction time parsing', 'PENDING');
-            try {
-                const now = new Date();
-                const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-                const transactionTime = istTime.toISOString().slice(0, 16);
-                const transactionDate = FinanceUtils.parseDate(transactionTime);
-                if (transactionDate instanceof Date) {
-                    recordTestResult('IST Fix: Transaction time parsing', 'PASS', `Transaction time: ${transactionTime}, parsed: ${transactionDate.toString()}`);
-                } else {
-                    recordTestResult('IST Fix: Transaction time parsing', 'FAIL', 'Failed to parse transaction time');
-                }
-            } catch (error) {
-                console.error('Transaction time parsing test failed:', error);
-                recordTestResult('IST Fix: Transaction time parsing', 'FAIL', `Transaction time parsing test failed: ${error.message}`);
-            }
-            
-            // Test 4: Date range filtering
-            recordTestResult('IST Fix: Date range filtering', 'PENDING');
-            try {
-                const dailyRange = FinanceUtils.getDateRange('daily');
-                const now = new Date();
-                const istNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-                const transactionTime = istNow.toISOString().slice(0, 16);
-                const transactionDate = FinanceUtils.parseDate(transactionTime);
-                const startDate = FinanceUtils.parseDate(dailyRange.start);
-                const endDate = FinanceUtils.parseDate(dailyRange.end);
-                endDate.setHours(23, 59, 59, 999); // Set to end of day
-                
-                const isWithinRange = transactionDate >= startDate && transactionDate <= endDate;
-                if (isWithinRange) {
-                    recordTestResult('IST Fix: Date range filtering', 'PASS', 'Today\'s transaction correctly included in today\'s filter');
-                } else {
-                    recordTestResult('IST Fix: Date range filtering', 'FAIL', 'Today\'s transaction not included in today\'s filter');
-                }
-            } catch (error) {
-                console.error('Date range filtering test failed:', error);
-                recordTestResult('IST Fix: Date range filtering', 'FAIL', `Date range filtering test failed: ${error.message}`);
-            }
-            
-            // Test 5: Yesterday exclusion
-            recordTestResult('IST Fix: Yesterday exclusion', 'PENDING');
-            try {
-                const dailyRange = FinanceUtils.getDateRange('daily');
-                const now = new Date();
-                const istNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-                const yesterday = new Date(istNow);
-                yesterday.setDate(yesterday.getDate() - 1);
-                const yesterdayTransaction = yesterday.toISOString().slice(0, 16);
-                const yesterdayParsed = FinanceUtils.parseDate(yesterdayTransaction);
-                const startDate = FinanceUtils.parseDate(dailyRange.start);
-                const endDate = FinanceUtils.parseDate(dailyRange.end);
-                endDate.setHours(23, 59, 59, 999); // Set to end of day
-                
-                const isYesterdayWithinRange = yesterdayParsed >= startDate && yesterdayParsed <= endDate;
-                if (!isYesterdayWithinRange) {
-                    recordTestResult('IST Fix: Yesterday exclusion', 'PASS', 'Yesterday\'s transaction correctly excluded from today\'s filter');
-                } else {
-                    recordTestResult('IST Fix: Yesterday exclusion', 'FAIL', 'Yesterday\'s transaction incorrectly included in today\'s filter');
-                }
-            } catch (error) {
-                console.error('Yesterday exclusion test failed:', error);
-                recordTestResult('IST Fix: Yesterday exclusion', 'FAIL', `Yesterday exclusion test failed: ${error.message}`);
-            }
-            
-            // Test 6: Date-only string parsing
-            recordTestResult('IST Fix: Date-only string parsing', 'PENDING');
-            try {
-                const dailyRange = FinanceUtils.getDateRange('daily');
-                const todayDateString = dailyRange.start;
-                const todayDateParsed = FinanceUtils.parseDate(todayDateString);
-                if (todayDateParsed instanceof Date) {
-                    recordTestResult('IST Fix: Date-only string parsing', 'PASS', `Date-only string "${todayDateString}" parsed to: ${todayDateParsed.toString()}`);
-                } else {
-                    recordTestResult('IST Fix: Date-only string parsing', 'FAIL', 'Failed to parse date-only string');
-                }
-            } catch (error) {
-                console.error('Date-only string parsing test failed:', error);
-                recordTestResult('IST Fix: Date-only string parsing', 'FAIL', `Date-only string parsing test failed: ${error.message}`);
-            }
-        }
-        
-        // Test dashboard refresh fixes
-        async function testDashboardRefreshFixes() {
-            console.log('Starting Dashboard Refresh Fix tests...');
-            
-            // Add category header
-            const resultsContainer = document.getElementById('testResults');
-            if (resultsContainer) {
-                const categoryHeader = document.createElement('div');
-                categoryHeader.className = 'test-category';
-                categoryHeader.innerHTML = '<i class="fas fa-sync-alt"></i> Dashboard Refresh Fix Tests';
-                resultsContainer.appendChild(categoryHeader);
-            }
-            
-            // Test 1: Account creation and balance calculation
-            recordTestResult('Dashboard Fix: Account creation and balance', 'PENDING');
-            try {
-                const testAccount = {
-                    id: "test-account-1",
-                    name: "Test Account",
-                    type: "Bank Account",
-                    balance: 1000.00
-                };
-                
-                const testAccounts = {
-                    "test-account-1": testAccount
-                };
-                
-                // Test that we can access account data
-                if (testAccounts["test-account-1"] && testAccounts["test-account-1"].balance === 1000.00) {
-                    recordTestResult('Dashboard Fix: Account creation and balance', 'PASS', 'Account created and balance accessible');
-                } else {
-                    recordTestResult('Dashboard Fix: Account creation and balance', 'FAIL', 'Account creation or balance access failed');
-                }
-            } catch (error) {
-                console.error('Account creation test failed:', error);
-                recordTestResult('Dashboard Fix: Account creation and balance', 'FAIL', `Account creation test failed: ${error.message}`);
-            }
-            
-            // Test 2: Transaction creation and filtering
-            recordTestResult('Dashboard Fix: Transaction creation and filtering', 'PENDING');
-            try {
-                const testTransactions = [
-                    {
-                        id: "test-transaction-1",
-                        type: "income",
-                        category: "Salary",
-                        amount: 5000.00,
-                        description: "Monthly salary",
-                        accountId: "test-account-1",
-                        date: "2025-10-01"
-                    },
-                    {
-                        id: "test-transaction-2",
-                        type: "expense",
-                        category: "Food",
-                        amount: 500.00,
-                        description: "Groceries",
-                        accountId: "test-account-1",
-                        date: "2025-10-02"
-                    }
-                ];
-                
-                // Test that we can access transaction data
-                if (testTransactions.length === 2 && testTransactions[0].amount === 5000.00) {
-                    recordTestResult('Dashboard Fix: Transaction creation and filtering', 'PASS', 'Transactions created and accessible');
-                } else {
-                    recordTestResult('Dashboard Fix: Transaction creation and filtering', 'FAIL', 'Transaction creation or access failed');
-                }
-            } catch (error) {
-                console.error('Transaction creation test failed:', error);
-                recordTestResult('Dashboard Fix: Transaction creation and filtering', 'FAIL', `Transaction creation test failed: ${error.message}`);
-            }
-            
-            // Test 3: Date range creation
-            recordTestResult('Dashboard Fix: Date range creation', 'PENDING');
-            try {
-                const dateRange = {
-                    start: "2025-10-01",
-                    end: "2025-10-31"
-                };
-                
-                if (dateRange.start === "2025-10-01" && dateRange.end === "2025-10-31") {
-                    recordTestResult('Dashboard Fix: Date range creation', 'PASS', 'Date range created correctly');
-                } else {
-                    recordTestResult('Dashboard Fix: Date range creation', 'FAIL', 'Date range creation failed');
-                }
-            } catch (error) {
-                console.error('Date range creation test failed:', error);
-                recordTestResult('Dashboard Fix: Date range creation', 'FAIL', `Date range creation test failed: ${error.message}`);
-            }
-        }
-        
-        // Test detailed date parsing
-        async function testDetailedDateParsing() {
-            console.log('Starting Detailed Date Parsing tests...');
-            
-            // Add category header
-            const resultsContainer = document.getElementById('testResults');
-            if (resultsContainer) {
-                const categoryHeader = document.createElement('div');
-                categoryHeader.className = 'test-category';
-                categoryHeader.innerHTML = '<i class="fas fa-calendar-alt"></i> Detailed Date Parsing Tests';
-                resultsContainer.appendChild(categoryHeader);
-            }
-            
-            // Test 1: Date-only string parsing
-            recordTestResult('Detailed Parsing: Date-only string', 'PENDING');
-            try {
-                const dateOnlyString = "2025-10-03";
-                const parsedDateOnly = FinanceUtils.parseDate(dateOnlyString);
-                if (parsedDateOnly instanceof Date) {
-                    recordTestResult('Detailed Parsing: Date-only string', 'PASS', `Date-only string "${dateOnlyString}" parsed to: ${parsedDateOnly.toString()}`);
-                } else {
-                    recordTestResult('Detailed Parsing: Date-only string', 'FAIL', 'Failed to parse date-only string');
-                }
-            } catch (error) {
-                console.error('Date-only string parsing test failed:', error);
-                recordTestResult('Detailed Parsing: Date-only string', 'FAIL', `Date-only string parsing failed: ${error.message}`);
-            }
-            
-            // Test 2: DateTime string parsing
-            recordTestResult('Detailed Parsing: DateTime string', 'PENDING');
-            try {
-                const dateTimeString = "2025-10-03T09:10";
-                const parsedDateTime = FinanceUtils.parseDate(dateTimeString);
-                if (parsedDateTime instanceof Date) {
-                    recordTestResult('Detailed Parsing: DateTime string', 'PASS', `DateTime string "${dateTimeString}" parsed to: ${parsedDateTime.toString()}`);
-                } else {
-                    recordTestResult('Detailed Parsing: DateTime string', 'FAIL', 'Failed to parse datetime string');
-                }
-            } catch (error) {
-                console.error('DateTime string parsing test failed:', error);
-                recordTestResult('Detailed Parsing: DateTime string', 'FAIL', `DateTime string parsing failed: ${error.message}`);
-            }
-            
-            // Test 3: Range checking
-            recordTestResult('Detailed Parsing: Range checking', 'PENDING');
-            try {
-                const dateOnlyString = "2025-10-03";
-                const dateTimeString = "2025-10-03T09:10";
-                const parsedDateOnly = FinanceUtils.parseDate(dateOnlyString);
-                const parsedDateTime = FinanceUtils.parseDate(dateTimeString);
-                const isAfter = parsedDateTime >= parsedDateOnly;
-                
-                if (isAfter) {
-                    recordTestResult('Detailed Parsing: Range checking', 'PASS', 'DateTime is correctly after date-only');
-                } else {
-                    recordTestResult('Detailed Parsing: Range checking', 'FAIL', 'DateTime is not correctly after date-only');
-                }
-            } catch (error) {
-                console.error('Range checking test failed:', error);
-                recordTestResult('Detailed Parsing: Range checking', 'FAIL', `Range checking test failed: ${error.message}`);
-            }
-            
-            // Test 4: End of day checking
-            recordTestResult('Detailed Parsing: End of day checking', 'PENDING');
-            try {
-                const dateOnlyString = "2025-10-03";
-                const dateTimeString = "2025-10-03T09:10";
-                const parsedDateOnly = FinanceUtils.parseDate(dateOnlyString);
-                const parsedDateTime = FinanceUtils.parseDate(dateTimeString);
-                const endOfDay = new Date(parsedDateOnly);
-                endOfDay.setHours(23, 59, 59, 999);
-                const isBeforeEnd = parsedDateTime <= endOfDay;
-                
-                if (isBeforeEnd) {
-                    recordTestResult('Detailed Parsing: End of day checking', 'PASS', 'DateTime is correctly before end of day');
-                } else {
-                    recordTestResult('Detailed Parsing: End of day checking', 'FAIL', 'DateTime is not correctly before end of day');
-                }
-            } catch (error) {
-                console.error('End of day checking test failed:', error);
-                recordTestResult('Detailed Parsing: End of day checking', 'FAIL', `End of day checking test failed: ${error.message}`);
-            }
-        }
-        
-        // Test dashboard improvements
-        async function testDashboardImprovements() {
-            console.log('Starting Dashboard Improvements tests...');
-            
-            // Add category header
-            const resultsContainer = document.getElementById('testResults');
-            if (resultsContainer) {
-                const categoryHeader = document.createElement('div');
-                categoryHeader.className = 'test-category';
-                categoryHeader.innerHTML = '<i class="fas fa-chart-bar"></i> Dashboard Improvements Tests';
-                resultsContainer.appendChild(categoryHeader);
-            }
-            
-            // Test 1: Custom date range functionality
-            recordTestResult('Dashboard Improvements: Custom date range', 'PENDING');
-            try {
-                // Simulate the custom date range functionality
-                const transactionDateRange = document.createElement('select');
-                transactionDateRange.id = 'transactionDateRange';
-                transactionDateRange.innerHTML = `
-                    <option value="all">All Time</option>
-                    <option value="daily">Today</option>
-                    <option value="weekly">This Week</option>
-                    <option value="monthly">This Month</option>
-                    <option value="yearly">This Year</option>
-                    <option value="custom">Custom</option>
-                `;
-                
-                // Test that we can access the select element
-                if (transactionDateRange && transactionDateRange.options.length === 6) {
-                    recordTestResult('Dashboard Improvements: Custom date range', 'PASS', 'Custom date range functionality accessible');
-                } else {
-                    recordTestResult('Dashboard Improvements: Custom date range', 'FAIL', 'Custom date range functionality not accessible');
-                }
-            } catch (error) {
-                console.error('Custom date range test failed:', error);
-                recordTestResult('Dashboard Improvements: Custom date range', 'FAIL', `Custom date range test failed: ${error.message}`);
-            }
-            
-            // Test 2: Chart functionality
-            recordTestResult('Dashboard Improvements: Chart functionality', 'PENDING');
-            try {
-                // Test data
-                const testTransactions = [
-                    { date: '2025-10-01', type: 'income', amount: 5000, category: 'Salary' },
-                    { date: '2025-10-02', type: 'expense', amount: 200, category: 'Food' },
-                    { date: '2025-10-03', type: 'expense', amount: 150, category: 'Transport' }
-                ];
-                
-                // Test that we can access transaction data
-                if (testTransactions.length === 3 && testTransactions[0].amount === 5000) {
-                    recordTestResult('Dashboard Improvements: Chart functionality', 'PASS', 'Chart data accessible');
-                } else {
-                    recordTestResult('Dashboard Improvements: Chart functionality', 'FAIL', 'Chart data not accessible');
-                }
-            } catch (error) {
-                console.error('Chart functionality test failed:', error);
-                recordTestResult('Dashboard Improvements: Chart functionality', 'FAIL', `Chart functionality test failed: ${error.message}`);
-            }
-        }
-        
         // Run all tests
         async function runAllTests() {
             const runButton = document.getElementById('runAllTests');
@@ -1072,18 +694,6 @@
                 await testDataLists();
                 await delay(100);
                 
-                await testISTTimezoneFixes();
-                await delay(100);
-                
-                await testDashboardRefreshFixes();
-                await delay(100);
-                
-                await testDetailedDateParsing();
-                await delay(100);
-                
-                await testDashboardImprovements();
-                await delay(100);
-                
                 // Add a completion message
                 addTestResult('All Tests Completed', 'PASS', `Passed: ${testResults.passed}, Failed: ${testResults.failed}`);
                 
@@ -1100,10 +710,7 @@
         
         // Set up event listeners
         document.addEventListener('DOMContentLoaded', () => {
-            const runButton = document.getElementById('runAllTests');
-            if (runButton) {
-                runButton.addEventListener('click', runAllTests);
-            }
+            document.getElementById('runAllTests').addEventListener('click', runAllTests);
             
             // Run tests automatically when page loads, but ensure all scripts are loaded
             window.addEventListener('load', () => {

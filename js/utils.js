@@ -31,53 +31,90 @@ class FinanceUtils {
     }
 
     static parseDate(dateString) {
-        if (!dateString) return new Date();
+        if (!dateString) return new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
         
         // Handle dd/mm/yyyy format
         if (dateString.includes('/')) {
             const [day, month, year] = dateString.split('/');
-            return new Date(year, month - 1, day);
+            // Create date in UTC and then convert to IST
+            const date = new Date(Date.UTC(year, month - 1, day));
+            return new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
         }
         
-        // Handle yyyy-mm-dd format
-        return new Date(dateString);
+        // Handle yyyy-mm-dd format (date-only)
+        if (dateString.includes('-') && !dateString.includes('T')) {
+            // For date-only strings like '2025-10-03'
+            // We want this to represent the start of the day in IST
+            const [year, month, day] = dateString.split('-');
+            const date = new Date(Date.UTC(year, month - 1, day));
+            const istDate = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+            // Set to beginning of the day
+            istDate.setHours(0, 0, 0, 0);
+            return istDate;
+        }
+        
+        // Handle datetime strings like '2025-10-03T09:10'
+        if (dateString.includes('T')) {
+            const date = new Date(dateString);
+            return new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+        }
+        
+        // Fallback
+        const date = new Date(dateString);
+        return new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
     }
 
     static getDateRange(rangeType, customStart = null, customEnd = null) {
+        // Use IST timezone for all date calculations
         const today = new Date();
+        // Convert to IST
+        const istToday = new Date(today.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
         let startDate, endDate;
 
         switch (rangeType) {
             case 'daily':
-                startDate = new Date(today);
-                endDate = new Date(today);
+                // Set start date to beginning of today in IST
+                startDate = new Date(istToday);
+                startDate.setHours(0, 0, 0, 0);
+                // Set end date to end of today in IST
+                endDate = new Date(istToday);
+                endDate.setHours(23, 59, 59, 999);
                 break;
             case 'weekly':
-                startDate = new Date(today);
-                startDate.setDate(today.getDate() - today.getDay());
+                startDate = new Date(istToday);
+                startDate.setDate(istToday.getDate() - istToday.getDay());
                 endDate = new Date(startDate);
                 endDate.setDate(startDate.getDate() + 6);
                 break;
             case 'monthly':
-                startDate = new Date(today.getFullYear(), today.getMonth(), 1);
-                endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+                startDate = new Date(istToday.getFullYear(), istToday.getMonth(), 1);
+                endDate = new Date(istToday.getFullYear(), istToday.getMonth() + 1, 0);
                 break;
             case 'yearly':
-                startDate = new Date(today.getFullYear(), 0, 1);
-                endDate = new Date(today.getFullYear(), 11, 31);
+                startDate = new Date(istToday.getFullYear(), 0, 1);
+                endDate = new Date(istToday.getFullYear(), 11, 31);
                 break;
             case 'custom':
-                startDate = customStart ? this.parseDate(customStart) : new Date();
-                endDate = customEnd ? this.parseDate(customEnd) : new Date();
+                startDate = customStart ? this.parseDate(customStart) : new Date(istToday);
+                endDate = customEnd ? this.parseDate(customEnd) : new Date(istToday);
                 break;
             default:
-                startDate = new Date(today.getFullYear(), today.getMonth(), 1);
-                endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+                startDate = new Date(istToday.getFullYear(), istToday.getMonth(), 1);
+                endDate = new Date(istToday.getFullYear(), istToday.getMonth() + 1, 0);
         }
 
+        // Return date strings in yyyy-mm-dd format
+        const startString = startDate.getFullYear() + '-' + 
+            String(startDate.getMonth() + 1).padStart(2, '0') + '-' + 
+            String(startDate.getDate()).padStart(2, '0');
+            
+        const endString = endDate.getFullYear() + '-' + 
+            String(endDate.getMonth() + 1).padStart(2, '0') + '-' + 
+            String(endDate.getDate()).padStart(2, '0');
+            
         return {
-            start: startDate.toISOString().split('T')[0],
-            end: endDate.toISOString().split('T')[0]
+            start: startString,
+            end: endString
         };
     }
 

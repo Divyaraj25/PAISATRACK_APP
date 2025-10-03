@@ -278,8 +278,11 @@ class AccountManager {
         this.loadAccountsList();
         
         // Refresh dashboard if it's active
-        if (typeof DashboardManager !== 'undefined' && document.getElementById('dashboard').classList.contains('active')) {
-            DashboardManager.loadDashboard();
+        if (typeof DashboardManager !== 'undefined') {
+            const dashboardElement = document.getElementById('dashboard');
+            if (dashboardElement && dashboardElement.classList.contains('active')) {
+                DashboardManager.loadDashboard();
+            }
         }
     }
 
@@ -348,8 +351,11 @@ class AccountManager {
         this.loadAccountsList();
         
         // Refresh dashboard if it's active
-        if (typeof DashboardManager !== 'undefined' && document.getElementById('dashboard').classList.contains('active')) {
-            DashboardManager.loadDashboard();
+        if (typeof DashboardManager !== 'undefined') {
+            const dashboardElement = document.getElementById('dashboard');
+            if (dashboardElement && dashboardElement.classList.contains('active')) {
+                DashboardManager.loadDashboard();
+            }
         }
     }
 }

@@ -67,6 +67,30 @@ class FinanceApp {
         document.getElementById('applyCustomRange')?.addEventListener('click', () => {
             this.applyCustomDateRange();
         });
+
+        // Handle window resize for responsive dashboard
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            // Debounce resize events
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Re-position additional charts if dashboard is active
+                if (this.currentPage === 'dashboard' && typeof DashboardManager !== 'undefined') {
+                    // Trigger a dashboard refresh to re-position charts
+                    const dateRangeSelect = document.getElementById('dashboardDateRange');
+                    if (dateRangeSelect) {
+                        const rangeType = dateRangeSelect.value;
+                        if (rangeType === 'custom') {
+                            const startDate = document.getElementById('customStartDate').value;
+                            const endDate = document.getElementById('customEndDate').value;
+                            DashboardManager.updateDashboard(rangeType, startDate, endDate);
+                        } else {
+                            DashboardManager.updateDashboard(rangeType);
+                        }
+                    }
+                }
+            }, 250);
+        });
     }
 
     async loadPage(page) {
@@ -376,7 +400,7 @@ class FinanceApp {
                     <div class="card-body">
                         <div class="tech-info">
                             <div class="info-item">
-                                <strong>Version:</strong> 1.0.1
+                                <strong>Version:</strong> 1.0.2
                             </div>
                             <div class="info-item">
                                 <strong>Data Format:</strong> JSON Files

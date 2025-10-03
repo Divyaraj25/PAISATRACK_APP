@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Timezone Issue</title>
+    <script src="js/utils.js"></script>
+</head>
+<body>
+    <h1>Debug Timezone Issue</h1>
+    <p>This page helps debug the timezone issue with the "today" filter.</p>
+    
+    <div id="results"></div>
+    
+    <script>
+        // Test timezone handling
+        const results = document.getElementById('results');
+        
+        // Get current time in different formats
+        const now = new Date();
+        const utcTime = now.toISOString();
+        const localTime = now.toString();
+        const localeTimeString = now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+        
+        results.innerHTML += `<p><strong>Current Time (Browser):</strong> ${now.toString()}</p>`;
+        results.innerHTML += `<p><strong>UTC Time:</strong> ${utcTime}</p>`;
+        results.innerHTML += `<p><strong>Locale Time (IST):</strong> ${localeTimeString}</p>`;
+        
+        // Test daily range creation
+        const dailyRange = FinanceUtils.getDateRange('daily');
+        results.innerHTML += `<p><strong>Daily Range:</strong> ${JSON.stringify(dailyRange)}</p>`;
+        
+        // Create a test transaction with current time
+        const transactionTime = now.toISOString().slice(0, 16);
+        results.innerHTML += `<p><strong>Transaction Time:</strong> ${transactionTime}</p>`;
+        
+        // Parse dates
+        const transactionDate = FinanceUtils.parseDate(transactionTime);
+        const startDate = FinanceUtils.parseDate(dailyRange.start);
+        const endDate = FinanceUtils.parseDate(dailyRange.end);
+        
+        results.innerHTML += `<p><strong>Transaction Parsed:</strong> ${transactionDate.toString()}</p>`;
+        results.innerHTML += `<p><strong>Start Date:</strong> ${startDate.toString()}</p>`;
+        results.innerHTML += `<p><strong>End Date:</strong> ${endDate.toString()}</p>`;
+        
+        // Check if transaction is within range
+        const isWithinRange = transactionDate >= startDate && transactionDate <= endDate;
+        results.innerHTML += `<p><strong>Is Within Range:</strong> ${isWithinRange ? 'Yes' : 'No'}</p>`;
+        
+        // Test with IST timezone
+        const istStartDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+        istStartDate.setHours(0, 0, 0, 0);
+        
+        const istEndDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+        istEndDate.setHours(23, 59, 59, 999);
+        
+        results.innerHTML += `<p><strong>IST Start Date:</strong> ${istStartDate.toString()}</p>`;
+        results.innerHTML += `<p><strong>IST End Date:</strong> ${istEndDate.toString()}</p>`;
+        
+        const isWithinISTRange = transactionDate >= istStartDate && transactionDate <= istEndDate;
+        results.innerHTML += `<p><strong>Is Within IST Range:</strong> ${isWithinISTRange ? 'Yes' : 'No'}</p>`;
+    </script>
+</body>
+</html>

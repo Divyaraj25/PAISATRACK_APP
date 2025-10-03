@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 :root {
     --primary-color: #2563eb;
     --primary-light: #3b82f6;
@@ -164,6 +169,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .page-header h2 {
@@ -172,6 +179,12 @@ body {
     gap: 10px;
     font-size: 1.8rem;
     color: var(--text-primary);
+    min-width: 0;
+    flex-shrink: 1;
+}
+
+.page-header h2 i {
+    flex-shrink: 0;
 }
 
 /* Filters Section */
@@ -217,6 +230,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .date-filter select {
@@ -226,6 +240,7 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     font-size: 0.9rem;
+    min-width: 120px;
 }
 
 .custom-range {
@@ -240,6 +255,8 @@ body {
     border-radius: var(--border-radius);
     background: var(--bg-primary);
     color: var(--text-primary);
+    min-width: 120px;
+    max-width: 100%;
 }
 
 .custom-range button {
@@ -256,6 +273,34 @@ body {
     background: var(--primary-dark);
 }
 
+/* Custom Date Range for Transactions */
+#transactionCustomDateRange {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#transactionCustomDateRange input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    min-width: 120px;
+    max-width: 100%;
+}
+
+#transactionCustomDateRange input[type="date"] {
+    min-width: 140px;
+}
+
+#transactionCustomDateRange label {
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
 /* Card Styles */
 .card {
     background: var(--bg-primary);
@@ -263,7 +308,7 @@ body {
     box-shadow: var(--shadow);
     overflow: hidden;
     transition: var(--transition);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .card:hover {
@@ -271,7 +316,7 @@ body {
 }
 
 .card-header {
-    padding: 1.5rem;
+    padding: 0.8rem;
     border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
@@ -279,24 +324,24 @@ body {
 }
 
 .card-header h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .card-body {
-    padding: 1.5rem;
+    padding: 0.8rem;
 }
 
 .card-icon {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .income-card .card-icon {
@@ -320,19 +365,20 @@ body {
 }
 
 .card-content h3 {
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.15rem;
+    font-weight: 500;
 }
 
 .amount {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.15rem;
 }
 
 .change {
-    font-size: 0.9rem;
+    font-size: 0.65rem;
     font-weight: 500;
 }
 
@@ -347,71 +393,183 @@ body {
 /* Summary Cards */
 .summary-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.7rem;
+    margin-bottom: 1rem;
 }
 
 .summary-cards .card {
-    padding: 1.5rem;
+    padding: 1rem;
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 0.7rem;
 }
 
 /* Dashboard Content */
 .dashboard-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 
 .accounts-section {
     margin-bottom: 2rem;
 }
 
+/* Chart Section */
+.chart-section .card-body {
+    padding: 0.7rem;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#incomeExpenseChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .chart-legend {
     display: flex;
-    gap: 1rem;
-    font-size: 0.9rem;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
 }
 
 .legend-income, .legend-expense {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
 }
 
 .legend-income i {
     color: var(--secondary-color);
+    font-size: 0.6rem;
 }
 
 .legend-expense i {
     color: var(--danger-color);
+    font-size: 0.6rem;
 }
 
-.view-all {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
+@media (max-width: 480px) {
+    .chart-legend {
+        gap: 0.5rem;
+    }
+    
+    .legend-income, .legend-expense {
+        font-size: 0.7rem;
+    }
+}
+
+.card-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Recent Section */
+.recent-section .card-body {
+    padding: 1rem;
+}
+
+/* Additional Charts */
+.additional-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.chart-card {
+    background: var(--bg-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
     transition: var(--transition);
 }
 
-.view-all:hover {
-    color: var(--primary-dark);
+.chart-card:hover {
+    box-shadow: var(--shadow-lg);
 }
 
-.empty-state {
-    text-align: center;
-    color: var(--text-light);
-    padding: 2rem;
+.chart-card .card-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.empty-state a {
-    color: var(--primary-color);
-    text-decoration: none;
+.chart-card .card-body {
+    padding: 0.8rem;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Responsive adjustments for charts */
+@media (max-width: 768px) {
+    .chart-section .card-body {
+        height: 220px;
+        padding: 0.75rem;
+    }
+    
+    .additional-charts {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .chart-card .card-body {
+        height: 180px;
+        padding: 0.75rem;
+    }
+    
+    .chart-legend {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    .legend-income, .legend-expense {
+        gap: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chart-section .card-body {
+        height: 160px;
+        padding: 0.5rem;
+    }
+    
+    .chart-card .card-body {
+        height: 140px;
+        padding: 0.5rem;
+    }
+    
+    .chart-card .card-header {
+        padding: 0.6rem;
+    }
+    
+    .chart-card .card-header h3 {
+        font-size: 0.9rem;
+    }
+    
+    .chart-legend {
+        font-size: 0.65rem;
+        gap: 0.4rem;
+    }
 }
 
 /* Categories Styles */
@@ -1308,6 +1466,13 @@ body {
     .date-filter {
         width: 100%;
         justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    
+    .date-filter select {
+        min-width: auto;
+        width: calc(50% - 0.5rem);
+        margin-bottom: 0.5rem;
     }
     
     .filters-section {
@@ -1416,4 +1581,186 @@ body {
     .budgets-grid {
         grid-template-columns: 1fr;
     }
+    
+    .date-filter select {
+        width: 100%;
+    }
+    
+    .custom-range {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .custom-range input,
+    .custom-range button {
+        width: 100%;
+    }
+    
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-section .card-body {
+        height: 150px;
+        padding: 0.4rem;
+    }
+    
+    .chart-card .card-body {
+        height: 130px;
+        padding: 0.4rem;
+    }
+}
+
+/* Account Balances in Dashboard */
+#accountBalances .accounts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.7rem;
+}
+
+#accountBalances .account-item {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-primary);
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+#accountBalances .account-item:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+#accountBalances .account-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    margin-right: 0.7rem;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+#accountBalances .account-info {
+    flex: 1;
+    min-width: 0;
+}
+
+#accountBalances .account-info h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#accountBalances .account-number {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#accountBalances .account-balance {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: right;
+    min-width: 65px;
+    flex-shrink: 0;
+}
+
+#accountBalances .account-balance.positive {
+    color: var(--secondary-color);
+}
+
+#accountBalances .account-balance.negative {
+    color: var(--danger-color);
+}
+
+/* Recent Transactions */
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-primary);
+    transition: var(--transition);
+}
+
+.transaction-item:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.transaction-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.transaction-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.transaction-details h4 {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.1rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.transaction-details p {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.transaction-amount {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: right;
+    min-width: 55px;
+    flex-shrink: 0;
+}
+
+.transaction-amount.positive {
+    color: var(--secondary-color);
+}
+
+.transaction-amount.negative {
+    color: var(--danger-color);
 }

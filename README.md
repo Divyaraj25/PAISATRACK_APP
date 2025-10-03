@@ -4,7 +4,7 @@
   
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
   [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-  ![Version](https://img.shields.io/badge/version-1.0.1-blue)
+  ![Version](https://img.shields.io/badge/version-1.0.3-blue)
 </div>
 
 ## 📋 Table of Contents
@@ -83,12 +83,14 @@ Built with modern web technologies, PaisaTrack runs entirely in your browser, en
 - Categorize transactions for better organization
 - Add notes and attachments to transactions
 - Search and filter transactions by date, amount, category, etc.
+- **Enhanced Date Filtering**: Today, week, month, year, and custom date range filters with proper timezone handling
 
 ### Account Management
 - Support for multiple account types (checking, savings, credit cards, cash, investments, loans)
 - Track account balances over time
 - Reconcile accounts to ensure accuracy
 - View transaction history for each account
+- **Real-time Dashboard Updates**: Account changes instantly reflect in the dashboard
 
 ### Budget Planning
 - Set monthly budgets for different categories
@@ -102,6 +104,12 @@ Built with modern web technologies, PaisaTrack runs entirely in your browser, en
 - Net worth tracking
 - Custom date range reports
 - Export reports to PDF/CSV
+
+### Dashboard
+- **Enhanced Visualizations**: Income vs. Expenses chart, Category distribution chart, Account balances chart
+- **Real-time Updates**: Dashboard automatically refreshes when data changes
+- **Responsive Design**: Fully optimized for mobile and tablet devices
+- **Comprehensive Metrics**: Total income, expenses, net balance, and budget status
 
 ## 📊 Benefits
 
@@ -156,6 +164,12 @@ Built with modern web technologies, PaisaTrack runs entirely in your browser, en
 3. Click 'Generate Report'
 4. Export the report if needed
 
+### Using Date Filters
+1. Navigate to the Dashboard or Transactions page
+2. Select from Today, Week, Month, Year, or Custom date range
+3. For Custom range, enter start and end dates
+4. Click Apply to filter data
+
 ## 📁 Data Management
 
 ### Exporting Data
@@ -187,6 +201,12 @@ PaisaTrack automatically saves your data to your browser's local storage. For ad
 - Unit tests for core functionality
 - Integration tests for user flows
 - UI tests for critical paths
+- **Enhanced Test Suite**: Comprehensive testing for timezone fixes, dashboard updates, and data synchronization
+
+### Recent Test Improvements
+- **Consolidated Test Files**: All individual test files have been merged into a single comprehensive test suite
+- **Enhanced Coverage**: Added tests for IST timezone handling, dashboard refresh fixes, and date parsing
+- **Improved Reporting**: Better test result visualization with pass/fail status and detailed messages
 
 ## 🤝 Contributing
 
@@ -220,37 +240,28 @@ We welcome contributions from the community! Here's how you can help:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Recent Improvements - No Automatic Downloads
-We've fixed an issue where the application was automatically downloading JSON files during page refresh and initialization. Now:
+## Recent Improvements
 
-- **No Automatic Downloads**: The application no longer triggers unwanted file downloads during normal operation
-- **Controlled Exports**: File downloads only happen when explicitly requested by the user
-- **Data Persistence**: All data is still properly saved to localStorage for persistence
-- **Export Functionality**: Export to JSON/CSV still works as expected when requested
+### Dashboard Enhancements
+- **Real-time Updates**: Dashboard now instantly refreshes when accounts, transactions, or budgets are added/modified
+- **Enhanced Visualizations**: Added Category distribution chart and Account balances chart
+- **Improved Responsiveness**: Fully optimized for mobile and tablet devices
+- **Better Date Filtering**: Fixed timezone issues with "Today" filter and added custom date range support
 
-## Additional Fixes
-We've also fixed several other issues:
+### Data Synchronization Fixes
+- **Account Balance Updates**: Net balance now correctly updates when accounts are added/modified
+- **Cross-Component Sync**: All components now properly synchronize data changes
+- **Timezone Handling**: Fixed IST timezone issues affecting date filtering
 
-- **Fixed Error Loading Preview**: Resolved issues with example files preview in the info page modal
-- **Fixed Missing Categories**: Categories now properly load in transaction filters and the add transaction page
-- **Improved Error Handling**: Better error messages and handling for file operations
+### User Experience Improvements
+- **Responsive Design**: Improved layout and sizing for all screen sizes
+- **Smaller Text**: Made dashboard elements more compact and user-friendly
+- **Enhanced Charts**: Added additional responsive charts for better financial insights
 
-### How It Works
-1. **Data Storage**: All data is stored in the browser's localStorage for persistence
-2. **File Operations**: File downloads only occur when explicitly requested through the export functionality
-3. **Initialization**: The app initializes without triggering any downloads
-4. **Normal Operations**: Adding, editing, or deleting data doesn't trigger downloads
-
-### Export Options
-- Export individual data types (Accounts, Transactions, Budgets, Categories, Settings)
-- Export in JSON format for complete data structure
-- Export in CSV format for spreadsheet compatibility
-- Export all data at once
-
-### Import Options
-- Import data from JSON files
-- Import data from CSV files
-- View example files to understand the expected format
+### Testing Improvements
+- **Consolidated Tests**: All individual test files merged into a single comprehensive test suite
+- **Enhanced Coverage**: Added tests for all recent fixes and improvements
+- **Better Reporting**: Improved test result visualization and error reporting
 
 ## File Structure
 ```
@@ -287,12 +298,8 @@ PAISATRACK_NEW/
 - **Complete Control**: You have full control over your data
 - **No Server Communication**: No data is sent to any server
 
-## Testing
-1. Open `overall_test.html` in your web browser to run the comprehensive test suite
-2. Tests will run automatically and display results with pass/fail status
-3. See `TESTING_README.md` for detailed information about the test coverage
 ## Technical Information
-- **Version**: 1.0.1
+- **Version**: 1.0.2
 - **Data Format**: JSON Files
 - **Browser Support**: Chrome, Firefox, Safari, Edge
 - **Theme Support**: Light & Dark Mode
