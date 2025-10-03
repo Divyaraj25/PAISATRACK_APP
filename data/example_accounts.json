@@ -1,0 +1,26 @@
+{
+  "1": {
+    "id": "1",
+    "name": "Cash Wallet",
+    "type": "Cash",
+    "balance": 1500.5,
+    "description": "Daily expenses"
+  },
+  "2": {
+    "id": "2",
+    "name": "Savings Account",
+    "type": "Bank Account",
+    "balance": 12500.75,
+    "bankName": "Secure Bank",
+    "lastFour": "4567"
+  },
+  "3": {
+    "id": "3",
+    "name": "Credit Card",
+    "type": "Credit Card",
+    "balance": -850.25,
+    "bankName": "Secure Bank",
+    "lastFour": "1234",
+    "expiry": "2025-12"
+  }
+}

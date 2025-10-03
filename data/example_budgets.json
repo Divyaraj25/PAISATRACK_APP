@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "category": "Food",
+    "amount": 400,
+    "period": "monthly"
+  },
+  {
+    "id": "2",
+    "category": "Transport",
+    "amount": 200,
+    "period": "monthly"
+  },
+  {
+    "id": "3",
+    "category": "Entertainment",
+    "amount": 150,
+    "period": "monthly"
+  }
+]

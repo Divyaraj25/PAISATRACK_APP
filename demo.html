@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - No Automatic Downloads</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-wallet"></i>
+                    <h1>Demo - No Automatic Downloads</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="page active">
+                <div class="page-header">
+                    <h2><i class="fas fa-check-circle"></i> Demo: No Automatic Downloads</h2>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Test Results</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>This demo shows that the application no longer triggers automatic downloads during initialization or normal operations.</p>
+                        
+                        <div class="test-results" id="testResults">
+                            <p>Running tests... Check the browser console for detailed results.</p>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="runTests">
+                            <i class="fas fa-play"></i> Run Tests
+                        </button>
+                        
+                        <button class="btn btn-secondary" id="testExport">
+                            <i class="fas fa-download"></i> Test Export (Should Download)
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>How It Works</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-save"></i>
+                                <h4>Data Persistence</h4>
+                                <p>All data is saved to localStorage for persistence without triggering downloads.</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-download"></i>
+                                <h4>Controlled Exports</h4>
+                                <p>File downloads only happen when explicitly requested by the user.</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>No Automatic Downloads</h4>
+                                <p>Initialization and normal operations never trigger unwanted downloads.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script>
+        document.getElementById('runTests').addEventListener('click', () => {
+            const results = document.getElementById('testResults');
+            results.innerHTML = '<p>Running tests... Check the browser console for detailed results.</p>';
+            
+            // Run simple download prevention tests
+            runSimpleTests();
+        });
+        
+        function runSimpleTests() {
+            // Mock the saveToJSON function to detect if it's being called unexpectedly
+            const originalSaveToJSON = DataManager.saveToJSON;
+            let downloadTriggered = false;
+
+            DataManager.saveToJSON = function(filename, data) {
+                console.log(`DOWNLOAD DETECTED: ${filename}`);
+                downloadTriggered = true;
+                // Don't actually trigger the download in this test
+                return Promise.resolve();
+            };
+
+            // Test 1: Initialization should not trigger downloads
+            console.log('Test 1: Initialization should not trigger downloads');
+            downloadTriggered = false;
+
+            DataManager.initializeDefaultData().then(() => {
+                if (downloadTriggered) {
+                    console.error('✗ FAILED: Initialization triggered downloads');
+                    updateTestResults('✗ Initialization triggered downloads (FAILED)');
+                } else {
+                    console.log('✓ PASSED: Initialization did not trigger downloads');
+                    updateTestResults('✓ Initialization did not trigger downloads (PASSED)');
+                }
+                
+                // Restore original function
+                DataManager.saveToJSON = originalSaveToJSON;
+                
+                // Test 2: Normal save operations should not trigger downloads
+                console.log('Test 2: Normal save operations should not trigger downloads');
+                downloadTriggered = false;
+                
+                // Mock the actual download function for this test
+                const originalSaveToJSON2 = DataManager.saveToJSON;
+                DataManager.saveToJSON = function(filename, data) {
+                    console.log(`DOWNLOAD DETECTED: ${filename}`);
+                    downloadTriggered = true;
+                    // Don't actually trigger the download in this test
+                    return Promise.resolve();
+                };
+                
+                DataManager.saveData('test', { test: 'data' }).then(() => {
+                    if (downloadTriggered) {
+                        console.error('✗ FAILED: Normal save operation triggered downloads');
+                        updateTestResults('✗ Normal save operation triggered downloads (FAILED)');
+                    } else {
+                        console.log('✓ PASSED: Normal save operation did not trigger downloads');
+                        updateTestResults('✓ Normal save operation did not trigger downloads (PASSED)');
+                    }
+                    
+                    // Restore original function
+                    DataManager.saveToJSON = originalSaveToJSON2;
+                    
+                    updateTestResults('All tests completed! Check console for details.');
+                });
+            });
+        }
+        
+        function runDownloadPreventionTests() {
+            // Mock the saveToJSON function to detect if it's being called unexpectedly
+            const originalSaveToJSON = DataManager.saveToJSON;
+            let downloadTriggered = false;
+
+            DataManager.saveToJSON = function(filename, data) {
+                console.log(`DOWNLOAD DETECTED: ${filename}`);
+                downloadTriggered = true;
+                // Don't actually trigger the download in this test
+                return Promise.resolve();
+            };
+
+            // Test 1: Initialization should not trigger downloads
+            console.log('Test 1: Initialization should not trigger downloads');
+            downloadTriggered = false;
+
+            DataManager.initializeDefaultData().then(() => {
+                if (downloadTriggered) {
+                    console.error('✗ FAILED: Initialization triggered downloads');
+                    updateTestResults('✗ Initialization triggered downloads (FAILED)');
+                } else {
+                    console.log('✓ PASSED: Initialization did not trigger downloads');
+                    updateTestResults('✓ Initialization did not trigger downloads (PASSED)');
+                }
+                
+                // Restore original function
+                DataManager.saveToJSON = originalSaveToJSON;
+                
+                // Test 2: Normal save operations should not trigger downloads
+                console.log('Test 2: Normal save operations should not trigger downloads');
+                downloadTriggered = false;
+                
+                // Mock the actual download function for this test
+                const originalSaveToJSON2 = DataManager.saveToJSON;
+                DataManager.saveToJSON = function(filename, data) {
+                    console.log(`DOWNLOAD DETECTED: ${filename}`);
+                    downloadTriggered = true;
+                    // Don't actually trigger the download in this test
+                    return Promise.resolve();
+                };
+                
+                DataManager.saveData('test', { test: 'data' }).then(() => {
+                    if (downloadTriggered) {
+                        console.error('✗ FAILED: Normal save operation triggered downloads');
+                        updateTestResults('✗ Normal save operation triggered downloads (FAILED)');
+                    } else {
+                        console.log('✓ PASSED: Normal save operation did not trigger downloads');
+                        updateTestResults('✓ Normal save operation did not trigger downloads (PASSED)');
+                    }
+                    
+                    // Restore original function
+                    DataManager.saveToJSON = originalSaveToJSON2;
+                    
+                    updateTestResults('All tests completed! Check console for details.');
+                });
+            });
+        }
+        
+        document.getElementById('testExport').addEventListener('click', () => {
+            // Test that export functionality works when explicitly requested
+            const testData = {
+                accounts: {},
+                transactions: [],
+                budgets: [],
+                categories: {
+                    income: ["Salary", "Freelance"],
+                    expense: ["Food", "Transport"],
+                    transfer: ["Cash to Bank"]
+                },
+                settings: {
+                    currency: '₹',
+                    theme: 'light'
+                }
+            };
+            
+            DataManager.saveData('demo', testData).then(() => {
+                DataManager.exportDataToFile('demo');
+            });
+        });
+        
+        function runDownloadPreventionTests() {
+            // Mock the saveToJSON function to detect if it's being called unexpectedly
+            const originalSaveToJSON = DataManager.saveToJSON;
+            let downloadTriggered = false;
+
+            DataManager.saveToJSON = function(filename, data) {
+                console.log(`DOWNLOAD DETECTED: ${filename}`);
+                downloadTriggered = true;
+                // Don't actually trigger the download in this test
+                return Promise.resolve();
+            };
+
+            // Test 1: Initialization should not trigger downloads
+            console.log('Test 1: Initialization should not trigger downloads');
+            downloadTriggered = false;
+
+            DataManager.initializeDefaultData().then(() => {
+                if (downloadTriggered) {
+                    console.error('✗ FAILED: Initialization triggered downloads');
+                    updateTestResults('✗ Initialization triggered downloads (FAILED)');
+                } else {
+                    console.log('✓ PASSED: Initialization did not trigger downloads');
+                    updateTestResults('✓ Initialization did not trigger downloads (PASSED)');
+                }
+                
+                // Restore original function
+                DataManager.saveToJSON = originalSaveToJSON;
+                
+                // Test 2: Normal save operations should not trigger downloads
+                console.log('Test 2: Normal save operations should not trigger downloads');
+                downloadTriggered = false;
+                
+                // Mock the actual download function for this test
+                const originalSaveToJSON2 = DataManager.saveToJSON;
+                DataManager.saveToJSON = function(filename, data) {
+                    console.log(`DOWNLOAD DETECTED: ${filename}`);
+                    downloadTriggered = true;
+                    // Don't actually trigger the download in this test
+                    return Promise.resolve();
+                };
+                
+                DataManager.saveData('test', { test: 'data' }).then(() => {
+                    if (downloadTriggered) {
+                        console.error('✗ FAILED: Normal save operation triggered downloads');
+                        updateTestResults('✗ Normal save operation triggered downloads (FAILED)');
+                    } else {
+                        console.log('✓ PASSED: Normal save operation did not trigger downloads');
+                        updateTestResults('✓ Normal save operation did not trigger downloads (PASSED)');
+                    }
+                    
+                    // Restore original function
+                    DataManager.saveToJSON = originalSaveToJSON2;
+                    
+                    updateTestResults('All tests completed! Check console for details.');
+                });
+            });
+        }
+        
+        function updateTestResults(message) {
+            const results = document.getElementById('testResults');
+            const p = document.createElement('p');
+            p.textContent = message;
+            results.appendChild(p);
+        }
+    </script>
+</body>
+</html>

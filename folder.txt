@@ -1,0 +1,21 @@
+finance-tracker/
+├── index.html
+├── css/
+│   ├── style.css
+│   └── themes.css
+├── js/
+│   ├── app.js
+│   ├── dashboard.js
+│   ├── transactions.js
+│   ├── accounts.js
+│   ├── budgets.js
+│   ├── categories.js
+│   └── utils.js
+├── data/
+│   ├── accounts.json
+│   ├── transactions.json
+│   ├── budgets.json
+│   ├── categories.json
+│   └── settings.json
+└── assets/
+    └── icons/

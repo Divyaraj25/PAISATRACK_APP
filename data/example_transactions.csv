@@ -1,0 +1,5 @@
+id,type,category,amount,description,accountId,toAccountId,date
+"1","income","Salary","5000","Monthly salary","2","","2023-01-01"
+"2","expense","Food","85.30","Grocery shopping","1","","2023-01-02"
+"3","expense","Transport","45.00","Taxi fare","1","","2023-01-03"
+"4","transfer","Bank Transfer","2000","Transfer to savings","1","2","2023-01-05"

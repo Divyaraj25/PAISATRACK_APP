@@ -1,0 +1,41 @@
+{
+  "income": [
+    "Salary",
+    "Freelance",
+    "Investment",
+    "Gift",
+    "Business",
+    "Bonus",
+    "Dividend",
+    "Rental Income",
+    "Other"
+  ],
+  "expense": [
+    "Food",
+    "Transport",
+    "Entertainment",
+    "Utilities",
+    "Rent",
+    "Healthcare",
+    "Education",
+    "Shopping",
+    "Travel",
+    "Personal Care",
+    "Insurance",
+    "Taxes",
+    "Subscriptions",
+    "Maintenance",
+    "Charity",
+    "Other"
+  ],
+  "transfer": [
+    "Cash to Bank",
+    "Bank to Card",
+    "Card to Cash",
+    "Between Accounts",
+    "Credit Card Payment",
+    "Bank Transfer",
+    "Investment Transfer",
+    "Loan Payment"
+  ]
+}

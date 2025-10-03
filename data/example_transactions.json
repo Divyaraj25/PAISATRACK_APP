@@ -1,0 +1,39 @@
+[
+  {
+    "id": "1",
+    "type": "income",
+    "category": "Salary",
+    "amount": 5000,
+    "description": "Monthly salary",
+    "accountId": "2",
+    "date": "2023-01-01"
+  },
+  {
+    "id": "2",
+    "type": "expense",
+    "category": "Food",
+    "amount": 85.30,
+    "description": "Grocery shopping",
+    "accountId": "1",
+    "date": "2023-01-02"
+  },
+  {
+    "id": "3",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 45.00,
+    "description": "Taxi fare",
+    "accountId": "1",
+    "date": "2023-01-03"
+  },
+  {
+    "id": "4",
+    "type": "transfer",
+    "category": "Bank Transfer",
+    "amount": 2000,
+    "description": "Transfer to savings",
+    "accountId": "1",
+    "toAccountId": "2",
+    "date": "2023-01-05"
+  }
+]
