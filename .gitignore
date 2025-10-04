@@ -57,3 +57,6 @@ Thumbs.db
 paisatrack_*.zip
 *.bak
 *.tmp
+
+# my image
+assets/myself.jpeg

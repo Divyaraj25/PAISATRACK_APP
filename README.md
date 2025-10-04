@@ -4,7 +4,7 @@
   
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
   [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-  ![Version](https://img.shields.io/badge/version-1.0.3-blue)
+  ![Version](https://img.shields.io/badge/version-1.0.4-blue)
 </div>
 
 ## 📋 Table of Contents
@@ -17,6 +17,7 @@
 - [🛠️ Installation](#%EF%B8%8F-installation)
 - [📖 Usage Guide](#-usage-guide)
 - [📁 Data Management](#-data-management)
+- [🔄 Version Updates](#-version-updates)
 - [🧪 Testing](#-testing)
 - [🤝 Contributing](#-contributing)
 - [🔒 Security & Privacy](#-security--privacy)
@@ -26,6 +27,8 @@
 PaisaTrack is a powerful, user-friendly personal finance management application designed to help you take complete control of your financial life. Whether you're tracking daily expenses, managing multiple accounts, or planning your budget, PaisaTrack provides all the tools you need in one secure, easy-to-use platform.
 
 Built with modern web technologies, PaisaTrack runs entirely in your browser, ensuring your financial data never leaves your device. With its intuitive interface and powerful features, PaisaTrack makes financial management accessible to everyone.
+
+This project was created by **Divyaraj Makwana** - Founder & Creator of PaisaTrack.
 
 ## ✨ Key Features
 
@@ -190,6 +193,55 @@ PaisaTrack automatically saves your data to your browser's local storage. For ad
 2. Store backups in a secure location
 3. Consider using cloud storage for additional redundancy
 
+## 🔄 Version Updates
+
+PaisaTrack maintains a detailed version history to track improvements and new features. The application includes an in-app updates page that provides information about each release.
+
+### Version 1.0.4 (Latest)
+**Release Date:** October 5, 2025
+- Enhanced info page design with improved layout and visual elements
+- Added dedicated updates page for complete version history
+- Improved overall design consistency across all pages
+- Added "Made in India for Indians" branding in header, footer, and info page
+- Updated creator information with photo integration
+
+### Version 1.0.3
+**Release Date:** October 4, 2025
+- Enhanced responsive design for dashboard elements
+- Improved layout adjustments for various screen sizes
+- Better handling of charts and visualizations on mobile devices
+
+### Version 1.0.2
+**Release Date:** September 28, 2025
+- Improved responsive design for dashboard and transaction pages
+- Added custom date format support in dashboard and transaction views
+- Better handling of timezone conversions
+- Enhanced mobile layout for transaction lists
+
+### Version 1.0.1
+**Release Date:** September 20, 2025
+- Fixed dashboard stats calculation glitch
+- Added new charts including:
+  - Expenses by category pie chart
+  - Accounts balance bar chart
+- Improved dashboard design with enhanced card layouts
+- Better visual consistency across all pages
+
+### Version 1.0.0
+**Release Date:** September 15, 2025
+- Initial application release with core functionality
+- Dashboard with financial summaries
+- Transaction management system
+- Account tracking capabilities
+- Budget planning features
+- Category management
+- Data import/export functionality
+- Responsive design for all devices
+- Light and dark theme support
+- Proudly Made in India for Indians
+
+To view the complete version history, open the "Updates" page within the application.
+
 ## 🧪 Testing
 
 ### Running Tests
@@ -198,113 +250,63 @@ PaisaTrack automatically saves your data to your browser's local storage. For ad
 3. View the results in the test runner
 
 ### Test Coverage
-- Unit tests for core functionality
-- Integration tests for user flows
-- UI tests for critical paths
-- **Enhanced Test Suite**: Comprehensive testing for timezone fixes, dashboard updates, and data synchronization
-
-### Recent Test Improvements
-- **Consolidated Test Files**: All individual test files have been merged into a single comprehensive test suite
-- **Enhanced Coverage**: Added tests for IST timezone handling, dashboard refresh fixes, and date parsing
-- **Improved Reporting**: Better test result visualization with pass/fail status and detailed messages
+- Unit tests for data management functions
+- Integration tests for UI components
+- End-to-end tests for core workflows
+- Performance tests for data loading and rendering
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! Here's how you can help:
+Contributions are welcome! Here's how you can contribute:
 
-1. **Report Bugs**: Open an issue to report bugs or suggest features
-2. **Submit Fixes**: Fork the repository and submit a pull request
-3. **Improve Documentation**: Help improve our documentation
-4. **Spread the Word**: Tell others about PaisaTrack
-
-### Development Setup
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/AmazingFeature`
-3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
-4. Push to the branch: `git push origin feature/AmazingFeature`
-5. Open a Pull Request
+2. Create a new branch for your feature or bug fix
+3. Make your changes
+4. Write tests if applicable
+5. Commit your changes with a clear commit message
+6. Push to your fork
+7. Create a pull request
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## 🔒 Security & Privacy
 
-### Data Security
-- All data is stored locally in your browser
-- No data is sent to any server
-- Regular exports are recommended for backup purposes
+PaisaTrack is designed with your privacy in mind:
 
-### Privacy Policy
-- We do not collect any personal information
-- Your financial data never leaves your device
-- No tracking or analytics are used
+- **Zero Data Collection**: We don't collect any personal or financial data
+- **Local Storage Only**: All data is stored in your browser's local storage
+- **No Internet Required**: The app works completely offline after initial load
+- **Transparent Code**: All source code is available for review
+- **No Tracking**: No analytics, cookies, or user tracking of any kind
+
+Your financial data never leaves your device, ensuring complete privacy and security.
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Recent Improvements
+MIT License
 
-### Dashboard Enhancements
-- **Real-time Updates**: Dashboard now instantly refreshes when accounts, transactions, or budgets are added/modified
-- **Enhanced Visualizations**: Added Category distribution chart and Account balances chart
-- **Improved Responsiveness**: Fully optimized for mobile and tablet devices
-- **Better Date Filtering**: Fixed timezone issues with "Today" filter and added custom date range support
+Copyright (c) 2025 Divyaraj Makwana - PaisaTrack
 
-### Data Synchronization Fixes
-- **Account Balance Updates**: Net balance now correctly updates when accounts are added/modified
-- **Cross-Component Sync**: All components now properly synchronize data changes
-- **Timezone Handling**: Fixed IST timezone issues affecting date filtering
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-### User Experience Improvements
-- **Responsive Design**: Improved layout and sizing for all screen sizes
-- **Smaller Text**: Made dashboard elements more compact and user-friendly
-- **Enhanced Charts**: Added additional responsive charts for better financial insights
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-### Testing Improvements
-- **Consolidated Tests**: All individual test files merged into a single comprehensive test suite
-- **Enhanced Coverage**: Added tests for all recent fixes and improvements
-- **Better Reporting**: Improved test result visualization and error reporting
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-## File Structure
-```
-PAISATRACK_NEW/
-├── css/
-│   ├── style.css
-│   └── themes.css
-├── data/
-│   ├── example_accounts.json
-│   ├── example_accounts.csv
-│   ├── example_transactions.json
-│   ├── example_transactions.csv
-│   ├── example_budgets.json
-│   ├── example_budgets.csv
-│   ├── example_categories.json
-│   ├── example_categories.csv
-│   └── example_settings.json
-├── js/
-│   ├── utils.js
-│   ├── app.js
-│   ├── dashboard.js
-│   ├── transactions.js
-│   ├── accounts.js
-│   ├── budgets.js
-│   └── categories.js
-├── index.html
-├── overall_test.html
-└── README.md
-```
+---
 
-## Security & Privacy
-- **Local Data Storage**: All your financial data is stored as JSON files on your device
-- **No Registration Required**: Use the app immediately without creating an account
-- **Complete Control**: You have full control over your data
-- **No Server Communication**: No data is sent to any server
-
-## Technical Information
-- **Version**: 1.0.3
-- **Data Format**: JSON Files
-- **Browser Support**: Chrome, Firefox, Safari, Edge
-- **Theme Support**: Light & Dark Mode
-- **Date Format**: DD/MM/YYYY HH:MM:SS
-
-## License
-© 2025 PaisaTrack. All rights reserved.
-For personal use only.
+<p align="center">Made with ❤️ in India for Indians by <a href="https://github.com/divyaraj25">Divyaraj Makwana</a></p>

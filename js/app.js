@@ -138,6 +138,9 @@ class FinanceApp {
             case 'info':
                 this.loadInfoPage();
                 break;
+            case 'updates':
+                // Updates page content is already in HTML
+                break;
         }
 
         this.currentPage = page;
@@ -155,6 +158,111 @@ class FinanceApp {
             </div>
             
             <div class="info-content">
+                <!-- App Overview Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-star"></i> About PaisaTrack</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="about-section">
+                            <p>PaisaTrack is a powerful, user-friendly personal finance management application designed to help you take complete control of your financial life. Whether you're tracking daily expenses, managing multiple accounts, or planning your budget, PaisaTrack provides all the tools you need in one secure, easy-to-use platform.</p>
+                            <p>Built with modern web technologies, PaisaTrack runs entirely in your browser, ensuring your financial data never leaves your device.</p>
+                            <p class="made-in-india">Proudly Made in India for Indians</p>
+                            
+                            <div class="app-stats">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h4>100% Secure</h4>
+                                        <p>Your data stays on your device</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h4>Fully Responsive</h4>
+                                        <p>Works on all devices</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-sync"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h4>Real-time Updates</h4>
+                                        <p>Instant dashboard refresh</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Features Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-rocket"></i> Key Features</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <h4>Transaction Management</h4>
+                                <p>Track income, expenses, and transfers with detailed categorization.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <h4>Account Management</h4>
+                                <p>Manage multiple accounts including cash, bank accounts, and credit cards.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <h4>Budget Planning</h4>
+                                <p>Set and monitor budgets for different spending categories.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Financial Insights</h4>
+                                <p>Visualize your financial data with charts and reports.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-tags"></i>
+                                </div>
+                                <h4>Custom Categories</h4>
+                                <p>Create and manage custom categories for better organization.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h4>Responsive Design</h4>
+                                <p>Use the app on any device - desktop, tablet, or mobile.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security & Privacy Card -->
                 <div class="card">
                     <div class="card-header">
                         <h3><i class="fas fa-shield-alt"></i> Security & Privacy</h3>
@@ -162,22 +270,30 @@ class FinanceApp {
                     <div class="card-body">
                         <div class="security-features">
                             <div class="feature-item">
-                                <i class="fas fa-lock"></i>
-                                <div>
+                                <div class="feature-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="feature-content">
                                     <h4>Local Data Storage</h4>
                                     <p>All your financial data is stored as JSON files on your device. No data is sent to any server.</p>
                                 </div>
                             </div>
+                            
                             <div class="feature-item">
-                                <i class="fas fa-user-shield"></i>
-                                <div>
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div class="feature-content">
                                     <h4>No Registration Required</h4>
                                     <p>Use the app immediately without creating an account or sharing personal information.</p>
                                 </div>
                             </div>
+                            
                             <div class="feature-item">
-                                <i class="fas fa-database"></i>
-                                <div>
+                                <div class="feature-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="feature-content">
                                     <h4>Complete Control</h4>
                                     <p>You have full control over your data. Export or delete your information anytime.</p>
                                 </div>
@@ -186,14 +302,15 @@ class FinanceApp {
                     </div>
                 </div>
 
+                <!-- Data Management Card -->
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fas fa-file-export"></i> Data Import/Export</h3>
+                        <h3><i class="fas fa-file-export"></i> Data Management</h3>
                     </div>
                     <div class="card-body">
                         <div class="data-management">
                             <div class="export-section">
-                                <h4>Export Your Data</h4>
+                                <h4><i class="fas fa-download"></i> Export Your Data</h4>
                                 <p>Save your financial data as JSON or CSV files to your computer.</p>
                                 <div class="export-buttons">
                                     <div class="button-group">
@@ -220,8 +337,9 @@ class FinanceApp {
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="import-section">
-                                <h4>Import Your Data</h4>
+                                <h4><i class="fas fa-upload"></i> Import Your Data</h4>
                                 <p>Load your financial data from JSON or CSV files.</p>
                                 <div class="import-buttons">
                                     <div class="button-group">
@@ -267,8 +385,9 @@ class FinanceApp {
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="examples-section">
-                                <h4>View Example Files</h4>
+                                <h4><i class="fas fa-file-code"></i> View Example Files</h4>
                                 <p>See examples of the file formats used by this application.</p>
                                 <div class="example-buttons">
                                     <button class="btn btn-secondary" id="viewExampleFiles">
@@ -280,119 +399,37 @@ class FinanceApp {
                     </div>
                 </div>
 
+                <!-- Updates Section -->
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fas fa-question-circle"></i> Help & Support</h3>
+                        <h3><i class="fas fa-history"></i> Version Updates</h3>
                     </div>
                     <div class="card-body">
-                        <div class="help-section">
-                            <h4>How to Use Data Import/Export</h4>
-                            <div class="help-steps">
-                                <div class="help-step">
-                                    <h5>Exporting Data</h5>
-                                    <ol>
-                                        <li>Navigate to the "Info" page</li>
-                                        <li>Scroll to the "Data Import/Export" section</li>
-                                        <li>Choose the data type you want to export</li>
-                                        <li>Select the format (JSON for complete data, CSV for spreadsheet compatibility)</li>
-                                        <li>Click the export button</li>
-                                        <li>Save the file when prompted by your browser</li>
-                                    </ol>
-                                </div>
-                                <div class="help-step">
-                                    <h5>Importing Data</h5>
-                                    <ol>
-                                        <li>Navigate to the "Info" page</li>
-                                        <li>Scroll to the "Data Import/Export" section</li>
-                                        <li>Choose the data type you want to import</li>
-                                        <li>Select the format of your file (JSON or CSV)</li>
-                                        <li>Click the import button</li>
-                                        <li>Select your file when prompted</li>
-                                        <li>The data will be loaded automatically</li>
-                                    </ol>
-                                </div>
-                                <div class="help-step">
-                                    <h5>Viewing Example Files</h5>
-                                    <ol>
-                                        <li>Click the "View Example Files" button</li>
-                                        <li>Browse the available example files</li>
-                                        <li>Click "View" to see the file content</li>
-                                        <li>Click "Download" to save the file to your computer</li>
-                                    </ol>
-                                </div>
-                            </div>
+                        <div class="updates-section">
+                            <p>Check out the latest updates and improvements to PaisaTrack.</p>
+                            <a href="#" class="btn btn-primary" data-page="updates">
+                                <i class="fas fa-external-link-alt"></i> View Full Update History
+                            </a>
                             
-                            <h4>File Formats</h4>
-                            <div class="format-info">
-                                <div class="format-item">
-                                    <h5>JSON Format</h5>
-                                    <p>Complete data structure with all properties. Best for backups and transferring between devices.</p>
-                                </div>
-                                <div class="format-item">
-                                    <h5>CSV Format</h5>
-                                    <p>Tabular format compatible with spreadsheets. Best for analysis in Excel or Google Sheets.</p>
-                                </div>
-                            </div>
-                            
-                            <h4>Troubleshooting</h4>
-                            <div class="troubleshooting">
-                                <div class="trouble-item">
-                                    <h5>Import Failed</h5>
-                                    <p>Ensure your file is in the correct format (JSON or CSV) and matches the expected structure. Use the example files as a reference.</p>
-                                </div>
-                                <div class="trouble-item">
-                                    <h5>Export Not Working</h5>
-                                    <p>Check your browser's download settings. The file should be saved to your default download location.</p>
-                                </div>
-                                <div class="trouble-item">
-                                    <h5>Data Not Updating</h5>
-                                    <p>After importing data, navigate to the relevant section (Accounts, Transactions, etc.) to see the changes.</p>
+                            <div class="latest-updates">
+                                <h4>Recent Updates</h4>
+                                
+                                <div class="update-item">
+                                    <div class="update-icon">
+                                        <i class="fas fa-code-branch"></i>
+                                    </div>
+                                    <div class="update-content">
+                                        <h5>Version 1.0.4 - Design Improvements & New Pages</h5>
+                                        <p>Enhanced info page design with improved layout and visual elements. Added dedicated updates page for complete version history.</p>
+                                        <span class="update-date">October 5, 2025</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-rocket"></i> Features</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="features-grid">
-                            <div class="feature-card">
-                                <i class="fas fa-exchange-alt"></i>
-                                <h4>Transaction Management</h4>
-                                <p>Track income, expenses, and transfers with detailed categorization.</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-credit-card"></i>
-                                <h4>Account Management</h4>
-                                <p>Manage multiple accounts including cash, bank accounts, and credit cards.</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-chart-pie"></i>
-                                <h4>Budget Planning</h4>
-                                <p>Set and monitor budgets for different spending categories.</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-chart-line"></i>
-                                <h4>Financial Insights</h4>
-                                <p>Visualize your financial data with charts and reports.</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-tags"></i>
-                                <h4>Custom Categories</h4>
-                                <p>Create and manage custom categories for better organization.</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-mobile-alt"></i>
-                                <h4>Responsive Design</h4>
-                                <p>Use the app on any device - desktop, tablet, or mobile.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Technical Information Card -->
                 <div class="card">
                     <div class="card-header">
                         <h3><i class="fas fa-code"></i> Technical Information</h3>
@@ -400,38 +437,54 @@ class FinanceApp {
                     <div class="card-body">
                         <div class="tech-info">
                             <div class="info-item">
-                                <strong>Version:</strong> 1.0.3
+                                <strong><i class="fas fa-code-branch"></i> Version:</strong> 1.0.4
                             </div>
                             <div class="info-item">
-                                <strong>Data Format:</strong> JSON Files
+                                <strong><i class="fas fa-database"></i> Data Format:</strong> JSON Files
                             </div>
                             <div class="info-item">
-                                <strong>Browser Support:</strong> Chrome, Firefox, Safari, Edge
+                                <strong><i class="fas fa-browser"></i> Browser Support:</strong> Chrome, Firefox, Safari, Edge
                             </div>
                             <div class="info-item">
-                                <strong>Theme Support:</strong> Light & Dark Mode
+                                <strong><i class="fas fa-palette"></i> Theme Support:</strong> Light & Dark Mode
                             </div>
                             <div class="info-item">
-                                <strong>Date Format:</strong> DD/MM/YYYY HH:MM:SS
+                                <strong><i class="fas fa-calendar-alt"></i> Date Format:</strong> DD/MM/YYYY HH:MM:SS
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Creator Information -->
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fas fa-heart"></i> About</h3>
+                        <h3><i class="fas fa-user"></i> Creator</h3>
                     </div>
                     <div class="card-body">
-                        <p>PaisaTrack is a personal finance management application designed to help you take control of your finances.</p>
-                        <p>Built with modern web technologies and a focus on user privacy and data security.</p>
-                        <div class="made-by">
-                            <strong>Made with ❤️ for better financial management</strong>
+                        <div class="creator-info">
+                            <div class="creator-card">
+                                <div class="creator-image">
+                                    <img src="assets/myself.jpeg" alt="Divyaraj Makwana" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCAyMXYtMmE0IDQgMCAwIDAtNC00SDhhNCA0IDAgMCAwLTQgNHYyIj48L3BhdGg+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ij48L2NpcmNsZT48L3N2Zz4='; this.onerror=null;">
+                                </div>
+                                <div class="creator-content">
+                                    <h4>Divyaraj Makwana</h4>
+                                    <p>Founder & Creator of PaisaTrack</p>
+                                    <p>A passionate developer focused on creating tools that help people manage their finances better.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         `;
+
+        // Add event listeners for navigation to updates page
+        document.querySelectorAll('[data-page="updates"]').forEach(element => {
+            element.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.loadPage('updates');
+            });
+        });
 
         // Add event listeners for export buttons (JSON) - explicitly request download
         document.getElementById('exportAccountsJSON')?.addEventListener('click', () => {
