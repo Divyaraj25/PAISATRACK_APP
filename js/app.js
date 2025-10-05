@@ -295,7 +295,7 @@ class FinanceApp {
                                 </div>
                                 <div class="feature-content">
                                     <h4>Complete Control</h4>
-                                    <p>You have full control over your data. Export or delete your information anytime.</p>
+                                    <p>You have full control over your data. Delete your information anytime.</p>
                                 </div>
                             </div>
                         </div>
@@ -303,7 +303,7 @@ class FinanceApp {
                 </div>
 
                 <!-- Data Management Card -->
-                <div class="card">
+                <!-- <div class="card">
                     <div class="card-header">
                         <h3><i class="fas fa-file-export"></i> Data Management</h3>
                     </div>
@@ -397,7 +397,7 @@ class FinanceApp {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Updates Section -->
                 <div class="card">
@@ -487,181 +487,181 @@ class FinanceApp {
         });
 
         // Add event listeners for export buttons (JSON) - explicitly request download
-        document.getElementById('exportAccountsJSON')?.addEventListener('click', () => {
-            DataManager.exportDataToFile('accounts'); // Explicitly download
-        });
+        // document.getElementById('exportAccountsJSON')?.addEventListener('click', () => {
+        //     DataManager.exportDataToFile('accounts'); // Explicitly download
+        // });
 
-        document.getElementById('exportTransactionsJSON')?.addEventListener('click', () => {
-            DataManager.exportDataToFile('transactions'); // Explicitly download
-        });
+        // document.getElementById('exportTransactionsJSON')?.addEventListener('click', () => {
+        //     DataManager.exportDataToFile('transactions'); // Explicitly download
+        // });
 
-        document.getElementById('exportBudgetsJSON')?.addEventListener('click', () => {
-            DataManager.exportDataToFile('budgets'); // Explicitly download
-        });
+        // document.getElementById('exportBudgetsJSON')?.addEventListener('click', () => {
+        //     DataManager.exportDataToFile('budgets'); // Explicitly download
+        // });
 
-        document.getElementById('exportCategoriesJSON')?.addEventListener('click', () => {
-            DataManager.exportDataToFile('categories'); // Explicitly download
-        });
+        // document.getElementById('exportCategoriesJSON')?.addEventListener('click', () => {
+        //     DataManager.exportDataToFile('categories'); // Explicitly download
+        // });
 
-        document.getElementById('exportSettingsJSON')?.addEventListener('click', () => {
-            DataManager.exportDataToFile('settings'); // Explicitly download
-        });
+        // document.getElementById('exportSettingsJSON')?.addEventListener('click', () => {
+        //     DataManager.exportDataToFile('settings'); // Explicitly download
+        // });
 
-        document.getElementById('exportAllJSON')?.addEventListener('click', async () => {
-            const dataKeys = ['accounts', 'transactions', 'budgets', 'categories', 'settings'];
-            for (const key of dataKeys) {
-                await DataManager.exportDataToFile(key); // Explicitly download each
-            }
-            alert('All data exported successfully as JSON files!');
-        });
+        // document.getElementById('exportAllJSON')?.addEventListener('click', async () => {
+        //     const dataKeys = ['accounts', 'transactions', 'budgets', 'categories', 'settings'];
+        //     for (const key of dataKeys) {
+        //         await DataManager.exportDataToFile(key); // Explicitly download each
+        //     }
+        //     alert('All data exported successfully as JSON files!');
+        // });
 
-        // Add event listeners for export buttons (CSV) - explicitly request download
-        document.getElementById('exportAccountsCSV')?.addEventListener('click', async () => {
-            const data = await DataManager.loadData('accounts', {});
-            DataManager.saveDataAsCSV('accounts', data, true); // true = explicitly download
-        });
+        // // Add event listeners for export buttons (CSV) - explicitly request download
+        // document.getElementById('exportAccountsCSV')?.addEventListener('click', async () => {
+        //     const data = await DataManager.loadData('accounts', {});
+        //     DataManager.saveDataAsCSV('accounts', data, true); // true = explicitly download
+        // });
 
-        document.getElementById('exportTransactionsCSV')?.addEventListener('click', async () => {
-            const data = await DataManager.loadData('transactions', []);
-            DataManager.saveDataAsCSV('transactions', data, true); // true = explicitly download
-        });
+        // document.getElementById('exportTransactionsCSV')?.addEventListener('click', async () => {
+        //     const data = await DataManager.loadData('transactions', []);
+        //     DataManager.saveDataAsCSV('transactions', data, true); // true = explicitly download
+        // });
 
-        document.getElementById('exportBudgetsCSV')?.addEventListener('click', async () => {
-            const data = await DataManager.loadData('budgets', []);
-            DataManager.saveDataAsCSV('budgets', data, true); // true = explicitly download
-        });
+        // document.getElementById('exportBudgetsCSV')?.addEventListener('click', async () => {
+        //     const data = await DataManager.loadData('budgets', []);
+        //     DataManager.saveDataAsCSV('budgets', data, true); // true = explicitly download
+        // });
 
-        document.getElementById('exportCategoriesCSV')?.addEventListener('click', async () => {
-            const data = await DataManager.loadData('categories', {});
-            // Convert categories object to array for CSV export
-            const categoriesArray = [];
-            Object.keys(data).forEach(type => {
-                data[type].forEach(category => {
-                    categoriesArray.push({ type, category });
-                });
-            });
-            DataManager.saveDataAsCSV('categories', categoriesArray, true); // true = explicitly download
-        });
+        // document.getElementById('exportCategoriesCSV')?.addEventListener('click', async () => {
+        //     const data = await DataManager.loadData('categories', {});
+        //     // Convert categories object to array for CSV export
+        //     const categoriesArray = [];
+        //     Object.keys(data).forEach(type => {
+        //         data[type].forEach(category => {
+        //             categoriesArray.push({ type, category });
+        //         });
+        //     });
+        //     DataManager.saveDataAsCSV('categories', categoriesArray, true); // true = explicitly download
+        // });
 
         // Add event listeners for import file inputs (JSON)
-        document.getElementById('importAccountsJSON')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'accounts').then(() => {
-                alert('Accounts imported successfully!');
-                // Refresh accounts page if it's active
-                if (typeof AccountManager !== 'undefined' && document.getElementById('accounts').classList.contains('active')) {
-                    AccountManager.loadAccounts();
-                }
-            }).catch((error) => {
-                alert('Error importing accounts: ' + error.message);
-            });
-        });
+        // document.getElementById('importAccountsJSON')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'accounts').then(() => {
+        //         alert('Accounts imported successfully!');
+        //         // Refresh accounts page if it's active
+        //         if (typeof AccountManager !== 'undefined' && document.getElementById('accounts').classList.contains('active')) {
+        //             AccountManager.loadAccounts();
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing accounts: ' + error.message);
+        //     });
+        // });
 
-        document.getElementById('importTransactionsJSON')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'transactions').then(() => {
-                alert('Transactions imported successfully!');
-                // Refresh transactions page if it's active
-                if (typeof TransactionManager !== 'undefined' && document.getElementById('transactions').classList.contains('active')) {
-                    TransactionManager.loadTransactions();
-                }
-            }).catch((error) => {
-                alert('Error importing transactions: ' + error.message);
-            });
-        });
+        // document.getElementById('importTransactionsJSON')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'transactions').then(() => {
+        //         alert('Transactions imported successfully!');
+        //         // Refresh transactions page if it's active
+        //         if (typeof TransactionManager !== 'undefined' && document.getElementById('transactions').classList.contains('active')) {
+        //             TransactionManager.loadTransactions();
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing transactions: ' + error.message);
+        //     });
+        // });
 
-        document.getElementById('importBudgetsJSON')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'budgets').then(() => {
-                alert('Budgets imported successfully!');
-                // Refresh budgets page if it's active
-                if (typeof BudgetManager !== 'undefined' && document.getElementById('budgets').classList.contains('active')) {
-                    BudgetManager.loadBudgets();
-                }
-            }).catch((error) => {
-                alert('Error importing budgets: ' + error.message);
-            });
-        });
+        // document.getElementById('importBudgetsJSON')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'budgets').then(() => {
+        //         alert('Budgets imported successfully!');
+        //         // Refresh budgets page if it's active
+        //         if (typeof BudgetManager !== 'undefined' && document.getElementById('budgets').classList.contains('active')) {
+        //             BudgetManager.loadBudgets();
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing budgets: ' + error.message);
+        //     });
+        // });
 
-        document.getElementById('importCategoriesJSON')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'categories').then(() => {
-                alert('Categories imported successfully!');
-                // Refresh categories page if it's active
-                if (typeof CategoryManager !== 'undefined' && document.getElementById('categories').classList.contains('active')) {
-                    CategoryManager.loadCategories();
-                }
-            }).catch((error) => {
-                alert('Error importing categories: ' + error.message);
-            });
-        });
+        // document.getElementById('importCategoriesJSON')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'categories').then(() => {
+        //         alert('Categories imported successfully!');
+        //         // Refresh categories page if it's active
+        //         if (typeof CategoryManager !== 'undefined' && document.getElementById('categories').classList.contains('active')) {
+        //             CategoryManager.loadCategories();
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing categories: ' + error.message);
+        //     });
+        // });
 
-        document.getElementById('importSettingsJSON')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'settings').then((data) => {
-                alert('Settings imported successfully!');
-                // Apply new settings
-                if (data && data.theme) {
-                    this.applyTheme(data.theme);
-                }
-            }).catch((error) => {
-                alert('Error importing settings: ' + error.message);
-            });
-        });
+        // document.getElementById('importSettingsJSON')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'settings').then((data) => {
+        //         alert('Settings imported successfully!');
+        //         // Apply new settings
+        //         if (data && data.theme) {
+        //             this.applyTheme(data.theme);
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing settings: ' + error.message);
+        //     });
+        // });
 
-        document.getElementById('importAllJSON')?.addEventListener('change', (e) => {
-            // For simplicity, we'll just alert that this is a placeholder
-            alert('Import all data functionality would be implemented here.');
-        });
+        // document.getElementById('importAllJSON')?.addEventListener('change', (e) => {
+        //     // For simplicity, we'll just alert that this is a placeholder
+        //     alert('Import all data functionality would be implemented here.');
+        // });
 
-        // Add event listeners for import file inputs (CSV)
-        document.getElementById('importAccountsCSV')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'accounts').then(() => {
-                alert('Accounts imported successfully from CSV!');
-                // Refresh accounts page if it's active
-                if (typeof AccountManager !== 'undefined' && document.getElementById('accounts').classList.contains('active')) {
-                    AccountManager.loadAccounts();
-                }
-            }).catch((error) => {
-                alert('Error importing accounts from CSV: ' + error.message);
-            });
-        });
+        // // Add event listeners for import file inputs (CSV)
+        // document.getElementById('importAccountsCSV')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'accounts').then(() => {
+        //         alert('Accounts imported successfully from CSV!');
+        //         // Refresh accounts page if it's active
+        //         if (typeof AccountManager !== 'undefined' && document.getElementById('accounts').classList.contains('active')) {
+        //             AccountManager.loadAccounts();
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing accounts from CSV: ' + error.message);
+        //     });
+        // });
 
-        document.getElementById('importTransactionsCSV')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'transactions').then(() => {
-                alert('Transactions imported successfully from CSV!');
-                // Refresh transactions page if it's active
-                if (typeof TransactionManager !== 'undefined' && document.getElementById('transactions').classList.contains('active')) {
-                    TransactionManager.loadTransactions();
-                }
-            }).catch((error) => {
-                alert('Error importing transactions from CSV: ' + error.message);
-            });
-        });
+        // document.getElementById('importTransactionsCSV')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'transactions').then(() => {
+        //         alert('Transactions imported successfully from CSV!');
+        //         // Refresh transactions page if it's active
+        //         if (typeof TransactionManager !== 'undefined' && document.getElementById('transactions').classList.contains('active')) {
+        //             TransactionManager.loadTransactions();
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing transactions from CSV: ' + error.message);
+        //     });
+        // });
 
-        document.getElementById('importBudgetsCSV')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'budgets').then(() => {
-                alert('Budgets imported successfully from CSV!');
-                // Refresh budgets page if it's active
-                if (typeof BudgetManager !== 'undefined' && document.getElementById('budgets').classList.contains('active')) {
-                    BudgetManager.loadBudgets();
-                }
-            }).catch((error) => {
-                alert('Error importing budgets from CSV: ' + error.message);
-            });
-        });
+        // document.getElementById('importBudgetsCSV')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'budgets').then(() => {
+        //         alert('Budgets imported successfully from CSV!');
+        //         // Refresh budgets page if it's active
+        //         if (typeof BudgetManager !== 'undefined' && document.getElementById('budgets').classList.contains('active')) {
+        //             BudgetManager.loadBudgets();
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing budgets from CSV: ' + error.message);
+        //     });
+        // });
 
-        document.getElementById('importCategoriesCSV')?.addEventListener('change', (e) => {
-            DataManager.importDataFromFile(e.target, 'categories').then(() => {
-                alert('Categories imported successfully from CSV!');
-                // Refresh categories page if it's active
-                if (typeof CategoryManager !== 'undefined' && document.getElementById('categories').classList.contains('active')) {
-                    CategoryManager.loadCategories();
-                }
-            }).catch((error) => {
-                alert('Error importing categories from CSV: ' + error.message);
-            });
-        });
+        // document.getElementById('importCategoriesCSV')?.addEventListener('change', (e) => {
+        //     DataManager.importDataFromFile(e.target, 'categories').then(() => {
+        //         alert('Categories imported successfully from CSV!');
+        //         // Refresh categories page if it's active
+        //         if (typeof CategoryManager !== 'undefined' && document.getElementById('categories').classList.contains('active')) {
+        //             CategoryManager.loadCategories();
+        //         }
+        //     }).catch((error) => {
+        //         alert('Error importing categories from CSV: ' + error.message);
+        //     });
+        // });
 
-        // Add event listener for viewing example files
-        document.getElementById('viewExampleFiles')?.addEventListener('click', () => {
-            this.showExampleFilesModal();
-        });
+        // // Add event listener for viewing example files
+        // document.getElementById('viewExampleFiles')?.addEventListener('click', () => {
+        //     this.showExampleFilesModal();
+        // });
     }
 
     // Show modal with example files

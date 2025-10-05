@@ -521,10 +521,10 @@ class DataManager {
     // Method to export data to a file (downloads file)
     static async exportDataToFile(key) {
         // Only allow export in browser environment
-        if (typeof window === 'undefined' || !window.document) {
-            console.warn('Export functionality only available in browser environment');
-            return false;
-        }
+        // if (typeof window === 'undefined' || !window.document) {
+        //     console.warn('Export functionality only available in browser environment');
+        //     return false;
+        // }
         
         try {
             const data = await this.loadData(key);
@@ -544,10 +544,10 @@ class DataManager {
     // Method to export data to a CSV file (downloads file)
     static async exportDataToCSV(key) {
         // Only allow export in browser environment
-        if (typeof window === 'undefined' || !window.document) {
-            console.warn('Export functionality only available in browser environment');
-            return false;
-        }
+        // if (typeof window === 'undefined' || !window.document) {
+        //     console.warn('Export functionality only available in browser environment');
+        //     return false;
+        // }
         
         try {
             const data = await this.loadData(key);

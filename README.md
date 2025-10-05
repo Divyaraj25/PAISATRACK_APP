@@ -5,6 +5,7 @@
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
   [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
   ![Version](https://img.shields.io/badge/version-1.0.4-blue)
+  ![Platform](https://img.shields.io/badge/platform-Web%20%26%20Android-green)
 </div>
 
 ## 📋 Table of Contents
@@ -12,6 +13,7 @@
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
 - [📱 Screenshots](#-screenshots)
+- [📲 Android App (APK)](#-android-app-apk)
 - [🔧 Features in Detail](#-features-in-detail)
 - [📊 Benefits](#-benefits)
 - [🛠️ Installation](#%EF%B8%8F-installation)
@@ -26,7 +28,7 @@
 ## 🌟 Overview
 PaisaTrack is a powerful, user-friendly personal finance management application designed to help you take complete control of your financial life. Whether you're tracking daily expenses, managing multiple accounts, or planning your budget, PaisaTrack provides all the tools you need in one secure, easy-to-use platform.
 
-Built with modern web technologies, PaisaTrack runs entirely in your browser, ensuring your financial data never leaves your device. With its intuitive interface and powerful features, PaisaTrack makes financial management accessible to everyone.
+Built with modern web technologies, PaisaTrack runs entirely in your browser, ensuring your financial data never leaves your device. With its intuitive interface and powerful features, PaisaTrack makes financial management accessible to everyone. Now also available as a native Android app for mobile users!
 
 This project was created by **Divyaraj Makwana** - Founder & Creator of PaisaTrack.
 
@@ -38,17 +40,20 @@ This project was created by **Divyaraj Makwana** - Founder & Creator of PaisaTra
 - **Budget Planning**: Set monthly budgets and track your spending against them
 - **Financial Reports**: Generate detailed reports and visualizations of your finances
 - **Recurring Transactions**: Set up automatic transactions for bills and regular income
+- **Offline Capability**: Works without internet connection on mobile devices
 
 ### 🎨 User Experience
 - **Dark/Light Mode**: Choose your preferred theme for comfortable viewing
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
 - **Intuitive Interface**: Clean, modern UI that's easy to navigate
 - **Keyboard Shortcuts**: Speed up your workflow with handy keyboard commands
+- **Native Mobile App**: Android APK available with splash screen and app icon - see [Android App (APK)](#-android-app-apk) section
+- **Touch Optimized**: Designed specifically for mobile touch interactions
 
-### 🔄 Data Management
+<!-- ### 🔄 Data Management
 - **Import/Export**: Easily import/export your data in JSON or CSV format
 - **Data Backup**: Automatic local storage backup
-- **Example Files**: Pre-formatted example files to help you get started
+- **Example Files**: Pre-formatted example files to help you get started -->
 
 ### 🛡️ Security
 - **Local Storage**: All data is stored in your browser
@@ -77,7 +82,40 @@ This project was created by **Divyaraj Makwana** - Founder & Creator of PaisaTra
 |----------|---------|----------|
 | ![Accounts](screenshots/accounts.png) | ![Reports](screenshots/reports.png) | ![Settings](screenshots/settings.png) |
 
+| Android Splash Screen | App Icon |
+|----------------------|----------|
+| ![Splash Screen](assets/Paisatrack%20Splash%20Screen.jpg) | ![App Icon](assets/PaisaTrack%20Icon.png) |
+
 *Note: Add your own screenshots to the `screenshots` directory and update the paths above.*
+
+## 📲 Android App (APK)
+
+PaisaTrack is now available as a native Android application for a seamless mobile experience. The APK provides all the features of the web version with additional mobile optimizations.
+
+### App Details
+- **Version**: 1.0.4
+- **File**: [PaisaTrack V1.0.4.apk](PaisaTrack%20V1.0.4.apk)
+- **Size**: 2.7 MB
+- **Platform**: Android 5.0 and above
+
+### Features
+- **Offline Access**: Use the app without an internet connection
+- **Native Performance**: Optimized for mobile devices
+- **Touch Interface**: Designed specifically for touch interactions
+- **Home Screen Installation**: Add to home screen for app-like experience
+- **Push Notifications**: Get reminders for recurring transactions (coming soon)
+
+### Installation Instructions
+1. Download [PaisaTrack V1.0.4.apk](PaisaTrack%20V1.0.4.apk)
+2. Open the downloaded file on your Android device
+3. If prompted, allow installation from unknown sources:
+   - For Android 8.0+: Settings > Apps & notifications > Special app access > Install unknown apps > Your browser > Allow
+   - For older versions: Settings > Lock screen and security > Unknown sources > Enable
+4. Tap "Install" to begin installation
+5. Once installed, open PaisaTrack from your app drawer
+
+### App Preview
+![App Icon](assets/PaisaTrack%20Icon.png) ![Splash Screen](assets/Paisatrack%20Splash%20Screen.jpg)
 
 ## 🔧 Features in Detail
 
@@ -139,11 +177,14 @@ This project was created by **Divyaraj Makwana** - Founder & Creator of PaisaTra
    ```
 2. Open `index.html` in your web browser
 
-### Option 2: Web Hosting
+### Option 2: Android APK (Recommended for Mobile)
+For a native mobile experience, see our dedicated [Android App (APK)](#-android-app-apk) section for detailed installation instructions and app information.
+
+### Option 3: Web Hosting
 1. Upload all files to your web server
 2. Access the application through your domain
 
-### Option 3: Use as PWA (Progressive Web App)
+### Option 4: Use as PWA (Progressive Web App)
 1. Open the app in Chrome/Edge
 2. Click 'Install' in the address bar or from the browser menu
 3. Launch the app from your desktop or app drawer
@@ -161,11 +202,11 @@ This project was created by **Divyaraj Makwana** - Founder & Creator of PaisaTra
 3. Select a category and set your monthly budget amount
 4. Click 'Save'
 
-### Generating Reports
+<!-- ### Generating Reports
 1. Navigate to the 'Reports' section
 2. Select the report type and date range
 3. Click 'Generate Report'
-4. Export the report if needed
+4. Export the report if needed -->
 
 ### Using Date Filters
 1. Navigate to the Dashboard or Transactions page
@@ -175,7 +216,7 @@ This project was created by **Divyaraj Makwana** - Founder & Creator of PaisaTra
 
 ## 📁 Data Management
 
-### Exporting Data
+<!-- ### Exporting Data
 1. Go to Settings > Data Management
 2. Click 'Export Data'
 3. Choose between JSON (recommended) or CSV format
@@ -185,7 +226,7 @@ This project was created by **Divyaraj Makwana** - Founder & Creator of PaisaTra
 1. Go to Settings > Data Management
 2. Click 'Import Data'
 3. Select your backup file
-4. Confirm the import
+4. Confirm the import -->
 
 ### Creating Backups
 PaisaTrack automatically saves your data to your browser's local storage. For additional safety:
@@ -204,6 +245,8 @@ PaisaTrack maintains a detailed version history to track improvements and new fe
 - Improved overall design consistency across all pages
 - Added "Made in India for Indians" branding in header, footer, and info page
 - Updated creator information with photo integration
+- **Released Android APK for mobile users** - Native mobile experience with offline capabilities
+- See [Android App (APK)](#-android-app-apk) section for installation details
 
 ### Version 1.0.3
 **Release Date:** October 4, 2025
@@ -235,7 +278,7 @@ PaisaTrack maintains a detailed version history to track improvements and new fe
 - Account tracking capabilities
 - Budget planning features
 - Category management
-- Data import/export functionality
+<!-- - Data import/export functionality -->
 - Responsive design for all devices
 - Light and dark theme support
 - Proudly Made in India for Indians
